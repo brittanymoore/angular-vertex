@@ -5,7 +5,11 @@
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
     "lite": "lite-server",
     "tsc": "tsc",
-    "tsc:w": "tsc -w"
+    "tsc:w": "tsc -w",
+    "serve": "http-server . -p 5556",
+    "build": "npm run tsc",
+    "build_prod": "npm run build && browserify -s main dist/main.js > dist/bundle.js && npm run minify",
+    "minify": "uglifyjs dist/bundle.js --screw-ie8 --compress --mangle --output dist/bundle.min.js"
   },
   "licenses": [
     {
@@ -35,6 +39,9 @@
     "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.3"
+    "typescript": "^2.0.3",
+    "browserify": "^13.0.1",
+    "http-server": "^0.9.0",
+    "uglifyjs": "^2.4.10"
   }
 }

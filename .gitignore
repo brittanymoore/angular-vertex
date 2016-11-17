@@ -1,5 +1,8 @@
 node_modules
 npm-debug.log
+
+jpapa-heroes
+.vscode
+
 app/*.js
 app/*.js.map
-jpapa-heroes/*
