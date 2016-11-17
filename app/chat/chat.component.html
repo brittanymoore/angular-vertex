@@ -1,0 +1,14 @@
+<h2>My Messages</h2>
+<div>
+  <label>Name:</label> <input #name />
+  <label>Message:</label> <textarea #message ></textarea>
+  <button (click)="add(name.value, message.value); name.value=''; message.value='';">
+    Add
+  </button>
+</div>
+<div class="messages">
+    <div class="chat-message" *ngFor="let message of messages">
+        <div>{{message.name}}</div>
+        <div>{{message.message}}</div>
+    </div>
+</div>
