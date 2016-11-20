@@ -1,11 +1,14 @@
-// required to run build script
-
 import './polyfills.browser';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 
+import { enableProdMode } from '@angular/core';
+
 export const platformRef = platformBrowserDynamic();
+
+// uncomment this line for production
+//enableProdMode();
 
 export function main() {
   return platformRef.bootstrapModule(AppModule)
