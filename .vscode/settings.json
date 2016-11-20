@@ -1,8 +1,0 @@
-{
-    "typescript.tsdk": "./node_modules/typescript/lib",
-    // hide auto-generated .js / .js.map files that are associated with a .ts
-    "files.exclude": {
-        "**/*.js": { "when": "$(basename).ts" },
-        "**/*.js.map": true
-    }
-}
