@@ -7,8 +7,9 @@ import { enableProdMode } from '@angular/core';
 
 export const platformRef = platformBrowserDynamic();
 
-// uncomment this line for production
-//enableProdMode();
+if (process.env.ENV === 'production') {
+  enableProdMode();
+}
 
 export function main() {
   return platformRef.bootstrapModule(AppModule)

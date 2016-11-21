@@ -3,10 +3,14 @@
     "version": "0.0.1",
     "description": "seed project for angular 2",
     "scripts": {
-        "build": "webpack --progress",
-        "watch": "npm run build -- --watch",
-        "server": "webpack-dev-server --inline --progress --port 3000 --content-base src",
-        "start": "npm run server"
+        "build:dev": "webpack --progress --config webpack.dev.js",
+        "build:prod": "webpack --progress --config webpack.prod.js",
+        "build": "npm run build:dev",
+        "watch": "npm run build:dev --watch",
+        "server": "webpack-dev-server --config webpack.dev.js --inline --progress --port 3000 --content-base src",
+        "server:prod": "webpack-dev-server --config webpack.prod.js --inline --progress --port 3000 --content-base src",
+        "start": "npm run server",
+        "start:prod": "npm run server:prod"
     },
     "license": "MIT",
     "dependencies": {

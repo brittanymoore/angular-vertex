@@ -2,6 +2,8 @@ var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
 
+const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+
 // Webpack Config
 var webpackConfig = {
   entry: {
@@ -22,6 +24,15 @@ var webpackConfig = {
         // your Angular Async Route paths relative to this root directory
       }
     ),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
+    new webpack.DefinePlugin({
+      'ENV': JSON.stringify(ENV),
+      'process.env': {
+        'ENV': JSON.stringify(ENV)
+      }
+    })
   ],
 
   module: {
