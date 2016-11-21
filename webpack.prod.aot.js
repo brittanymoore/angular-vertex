@@ -2,17 +2,17 @@ var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
+const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 // Webpack Config
 var webpackConfig = {
   entry: {
-    'main': './src/main.ts',
+    'main': './src/main.aot.ts'
   },
 
   output: {
     publicPath: '',
-    path: path.resolve(__dirname, './src'),
+    path: path.resolve(__dirname, './dist-aot'),
   },
 
   plugins: [
@@ -24,6 +24,9 @@ var webpackConfig = {
         // your Angular Async Route paths relative to this root directory
       }
     ),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'process.env': {
@@ -56,7 +59,7 @@ var defaultConfig = {
   devtool: 'source-map',
 
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name]-aot.bundle.min.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },

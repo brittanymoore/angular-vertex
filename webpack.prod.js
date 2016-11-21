@@ -7,7 +7,9 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 // Webpack Config
 var webpackConfig = {
   entry: {
-    'main': './src/main.browser.ts',
+    //'main': './src/main.aot.ts'
+    'main': './src/main.ts',
+    'vendor': './src/vendor.ts'
   },
 
   output: {
@@ -16,6 +18,7 @@ var webpackConfig = {
   },
 
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.min.js'}),
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
@@ -59,7 +62,7 @@ var defaultConfig = {
   devtool: 'source-map',
 
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.min.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },

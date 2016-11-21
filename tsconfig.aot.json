@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
-    "outDir": "dist",
+    "module": "es2015",
     "rootDir": ".",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -13,9 +12,10 @@
     ],
     "lib": ["es6", "dom"]
   },
-  "exclude": [
-    "node_modules"
-  ],
   "compileOnSave": false,
-  "buildOnSave": false
+  "buildOnSave": false,
+  "angularCompilerOptions": {
+      "genDir": "compiled-aot",
+      "skipMetadataEmit": true
+  }
 }

@@ -1,7 +1,8 @@
-import './polyfills.browser';
+import './vendor';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
+
+import { AppModuleNgFactory } from './../compiled-aot/src/app/app.module.ngfactory';
 
 import { enableProdMode } from '@angular/core';
 
@@ -12,8 +13,7 @@ if (process.env.ENV === 'production') {
 }
 
 export function main() {
-  return platformRef.bootstrapModule(AppModule)
-    .catch(err => console.error(err));
+  return platformRef.bootstrapModuleFactory(AppModuleNgFactory).catch(err => console.error(err));
 }
 
 // support async tag or hmr

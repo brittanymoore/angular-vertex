@@ -1,8 +1,14 @@
 node_modules
 npm-debug.log
 
-dist
+compiled-aot
+dist/*.min.js
+dist-aot/*.min.js
 .vscode
+*.zip
 
-app/*.js
-app/*.js.map
+src/*.js
+src/*.js.map
+src/*.map
+src/app/*.js
+src/app/*.js.map
