@@ -3,13 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-
-import { ToDoService } from './todo/todo.service';
+import { ToDoModule } from './todo/todo.module';
 
 import { HttpModule } from '@angular/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
-
 import { AppRoutingModule, routedComponents } from './app.routing.module';
 
 @NgModule({
@@ -18,13 +14,13 @@ import { AppRoutingModule, routedComponents } from './app.routing.module';
         AppRoutingModule,
         FormsModule,
         HttpModule,
-        InMemoryWebApiModule.forRoot(InMemoryDataService, { delay: 600 })
+        ToDoModule
     ],
     declarations: [
         AppComponent,
         routedComponents
     ],
-    providers: [ ToDoService ],
+    providers: [ ],
     bootstrap: [ AppComponent ]
 })
 

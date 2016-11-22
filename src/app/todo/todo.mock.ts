@@ -1,4 +1,4 @@
-export class InMemoryDataService {
+export class ToDoMock {
 
   createDb() {
     let todo = [
