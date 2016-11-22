@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
+import { ToDoComponent } from './todo/todo.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'todo',
+    component: ToDoComponent
   }
 ];
 
@@ -22,4 +27,4 @@ const routes: Routes = [
 
 export class AppRoutingModule { }
 
-export const routedComponents = [HomeComponent];
+export const routedComponents = [HomeComponent, ToDoComponent];
