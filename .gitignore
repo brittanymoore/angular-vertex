@@ -1,14 +1,12 @@
+.vscode
 node_modules
 npm-debug.log
 
 compiled-aot
-dist/*.min.js
-dist-aot/*.min.js
-.vscode
+
+/src/**/*.js
+/src/**/*.map
+
 *.zip
 
-src/*.js
-src/*.js.map
-src/*.map
-src/app/*.js
-src/app/*.js.map
+

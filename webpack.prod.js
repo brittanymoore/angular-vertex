@@ -7,7 +7,6 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 // Webpack Config
 var webpackConfig = {
   entry: {
-    //'main': './src/main.aot.ts'
     'main': './src/main.ts',
     'vendor': './src/vendor.ts'
   },

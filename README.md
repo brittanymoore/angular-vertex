@@ -19,5 +19,5 @@ There are three ways to run the project:
 
 2) PRODUCTION mode: npm run start:prod
 
-3) PRODUCTION mode (AOT compile): npm run start:prod:aot
+3) PRODUCTION mode (AOT compile): npm run start:prod:aot **this will not auto reload due to the compile step**
 
