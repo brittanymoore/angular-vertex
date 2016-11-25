@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 import { Task } from './task';
 
@@ -13,21 +16,22 @@ export class ToDoService {
 
     constructor(private http: Http) { }
 
-    getTasks(): Promise<Task[]> {
-
-        return this.http
-            .get(this.toDoUrl)
-            .toPromise()
-            .then(response => response.json().data as Task[])
-            .catch(this.handleError);
-
+    private extractData(res: Response) {
+        let body = res.json();
+        return body.data || { };
     }
 
-    create(name: string):Promise<Task> {
-        return this.http   
+    getTasks(): Observable<Task[]> {
+        return this.http
+            .get(this.toDoUrl)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
+    create(name: string): Observable<Task> {
+        return this.http
             .post(this.toDoUrl, JSON.stringify({name: name}), { headers: this.headers })
-            .toPromise()
-            .then(res => res.json().data)
+            .map(this.extractData)
             .catch(this.handleError);
     }
 

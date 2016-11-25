@@ -20,17 +20,18 @@ export class ToDoComponent implements OnInit {
     getTasks(): void {
         this.toDoService
             .getTasks()
-            .then(tasks => this.tasks = tasks)
-            .catch(error => this.error = error);
+            .subscribe(
+                tasks => this.tasks = tasks,
+                error => this.error = <any>error);           
     } 
 
     add(name: string): void {
         name = name.trim();
         if (!name) { return; }
         this.toDoService.create(name)
-            .then(task => {
-                this.tasks.push(task);
-            });
+            .subscribe(
+                task => this.tasks.push(task),
+                error => this.error = <any>error);
     }   
 
     ngOnInit(): void {
