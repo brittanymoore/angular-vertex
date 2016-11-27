@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ToDoModule } from './todo/todo.module';
-
-import { HttpModule } from '@angular/http';
+import { MockModule } from './mock/mock.module';
 import { AppRoutingModule, routedComponents } from './app.routing.module';
 
 @NgModule({
@@ -13,14 +12,13 @@ import { AppRoutingModule, routedComponents } from './app.routing.module';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpModule,
-        ToDoModule
+        ToDoModule,
+        MockModule
     ],
     declarations: [
         AppComponent,
         routedComponents
     ],
-    providers: [ ],
     bootstrap: [ AppComponent ]
 })
 
