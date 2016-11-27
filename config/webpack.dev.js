@@ -12,14 +12,14 @@ var webpackConfig = {
 
   output: {
     publicPath: '',
-    path: path.resolve(__dirname, './dev'),
+    path: path.resolve(__dirname, './../dev'),
   },
 
   plugins: [
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-      path.resolve(__dirname, './src'),
+      path.resolve(__dirname, './../src'),
       {
         // your Angular Async Route paths relative to this root directory
       }
@@ -63,7 +63,7 @@ var defaultConfig = {
 
   resolve: {
     extensions: [ '.ts', '.js' ],
-    modules: [ path.resolve(__dirname, 'node_modules') ]
+    modules: [ path.resolve(__dirname, './../node_modules') ]
   },
 
   devServer: {

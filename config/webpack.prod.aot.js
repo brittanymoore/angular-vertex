@@ -7,21 +7,19 @@ const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 // Webpack Config
 var webpackConfig = {
   entry: {
-    'main': './src/main.ts',
-    'vendor': './src/vendor.ts'
+    'main': './src/main.aot.ts'
   },
 
   output: {
     publicPath: '',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, './../dist-aot'),
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.min.js'}),
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-      path.resolve(__dirname, './src'),
+      path.resolve(__dirname, './../src'),
       {
         // your Angular Async Route paths relative to this root directory
       }
@@ -61,14 +59,14 @@ var defaultConfig = {
   devtool: 'source-map',
 
   output: {
-    filename: '[name].bundle.min.js',
+    filename: '[name]-aot.bundle.min.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
 
   resolve: {
     extensions: [ '.ts', '.js' ],
-    modules: [ path.resolve(__dirname, 'node_modules') ]
+    modules: [ path.resolve(__dirname, './../node_modules') ]
   },
 
   devServer: {
