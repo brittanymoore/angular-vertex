@@ -5,7 +5,7 @@ import { ToDoService } from './todo.service';
 @NgModule({
   imports: [ ],
   providers: [ 
-    ToDoService,
+    ToDoService
   ],
 })
 export class ToDoModule { } 
