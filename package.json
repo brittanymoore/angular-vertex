@@ -26,7 +26,8 @@
         "start:dev": "npm run clean:dev && npm run server:dev",
         "start:prod": "npm run clean:prod && npm run server:prod",
         "start:prod:aot": "npm run clean:prod:aot && npm run compile:aot && npm run server:prod:aot",
-        "start": "npm run start:dev"
+        "start": "npm run start:dev",
+        "test": "./node_modules/.bin/karma start"
     },
     "license": "MIT",
     "dependencies": {
@@ -48,6 +49,7 @@
     },
     "devDependencies": {
         "@types/node": "^6.0.48",
+        "@types/jasmine": "^2.2.34",
         "awesome-typescript-loader": "^2.2.4",
         "angular2-router-loader": "^0.3.4",
         "angular2-template-loader": "^0.6.0",
@@ -58,7 +60,14 @@
         "webpack": "2.1.0-beta.27",
         "webpack-dev-server": "2.1.0-beta.11",
         "webpack-merge": "^0.15.0",
-        "rimraf": "^2.5.4"
+        "rimraf": "^2.5.4",
+        "karma": "^1.2.0",
+        "karma-jasmine": "^1.0.2",
+        "karma-chrome-launcher": "^2.0.0",
+        "karma-webpack": "1.8.0",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-spec-reporter": "^0.0.26",
+        "jasmine": "^2.5.2"
     },
     "repository": {
         "type": "git",

@@ -11,7 +11,8 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "lib": ["es6", "dom"]
+    "lib": ["es6", "dom"],
+    "types": ["node", "jasmine"]
   },
   "exclude": [
     "node_modules"
