@@ -6,46 +6,55 @@ import { Common } from './../app.common.service';
 
 export function mockBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend, common: Common) {
     
-    backend.connections.subscribe((connection: MockConnection) => {
+    // disable mock backend when running in sharepoint
+    if (process.env.ENV === 'sharepoint') {
 
-        setTimeout(() => {
+        return new Http(realBackend, options);
 
-            // TODO
+    } else {
 
-            if (connection.request.url.match(/\/_api\/web\/lists\/getByTitle\(\'Tasks\'\)/) &&
-            connection.request.method === RequestMethod.Get) {
+        backend.connections.subscribe((connection: MockConnection) => {
 
-                let mock = new ToDoMock();
-                let tasks = common.wrapHttpData(mock.getTasks());
+            setTimeout(() => {
 
-                connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: tasks })));
+                // TODO
 
-                return;
+                if (connection.request.url.match(/\/_api\/web\/lists\/getByTitle\(\'Tasks\'\)/) &&
+                connection.request.method === RequestMethod.Get) {
 
-            }
+                    let mock = new ToDoMock();
+                    let tasks = common.wrapHttpData(mock.getTasks());
 
-            if (connection.request.url.match(/\/_api\/web\/lists\/getByTitle\(\'Tasks\'\)/) &&
-            connection.request.method === RequestMethod.Post) {
+                    connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: tasks })));
 
-                let mock = new ToDoMock();
-                
-                let data = JSON.parse(connection.request.getBody());
-                let newTask = common.wrapHttpData(mock.addTask(data.Name));
+                    return;
 
-                connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: newTask })));
+                }
 
-                return;
+                if (connection.request.url.match(/\/_api\/web\/lists\/getByTitle\(\'Tasks\'\)/) &&
+                connection.request.method === RequestMethod.Post) {
 
-            }
+                    let mock = new ToDoMock();
+                    
+                    let data = JSON.parse(connection.request.getBody());
+                    let newTask = common.wrapHttpData(mock.addTask(data.Name));
 
-            let realHttp = new Http(realBackend, options);
-            realHttp.get(connection.request.url).subscribe((response: Response) => { connection.mockRespond(response); });
+                    connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: newTask })));
 
-        }, 500);
+                    return;
 
-    });
+                }
 
-    return new Http(backend, options);
+                let realHttp = new Http(realBackend, options);
+                realHttp.get(connection.request.url).subscribe((response: Response) => { connection.mockRespond(response); });
+
+            }, 500);
+
+        });
+
+        return new Http(backend, options);
+
+    } 
 
 }
 
