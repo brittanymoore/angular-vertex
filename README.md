@@ -26,12 +26,12 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 Vertex currently has four build modes: 
 
-| Build Mode              | Command                | Output   | EnableProdMode | Uglify | # Files | AOT     | MockBackend |
-| ----------------------- | ---------------------- | -------  | -------------- | ------ | ------  | ------- | ----------- |
-| Development             | npm run build:dev      | dev      | false          | false  | 1       | false   | true        |
-| Production              | npm run build:prod     | dist     | true           | true   | 2       | false   | true        |
-| Production (AOT)        | npm run build:prod:aot | dist-aot | true           | true   | 1       | true    | true        |
-| Production (SharePoint) | npm run build:prod:sp  | dist-sp  | true           | true   | 2       | false   | false       |
+| Build Mode        | Command        | Output   | EnableProdMode | Uglify | # Files | AOT     | MockBackend |
+| ----------------- | -------------- | -------  | -------------- | ------ | ------  | ------- | ----------- |
+| Dev               | build:dev      | dev      | false          | false  | 1       | false   | true        |
+| Prod              | build:prod     | dist     | true           | true   | 2       | false   | true        |
+| Prod (AOT)        | build:prod:aot | dist-aot | true           | true   | 1       | true    | true        |
+| Prod (SharePoint) | build:prod:sp  | dist-sp  | true           | true   | 2       | false   | false       |
 
 Each mode using MockBackend has a start command similar to the one above, which can be used to launch the app in localhost:
 
@@ -48,10 +48,10 @@ a minimal index.aspx file that can be used to load your app in SharePoint.
 
 In order to use index.aspx correctly, ensure the following paths are correct:
 
-* The <base> tag's href attribute
-* The <script /> tags containing the app
+* base tag's href attribute
+* script tags containing the app
 
-Please note that the SharePoint-integrated components expect to find lists on the site itself. For example, the TODO component
+Note that the SharePoint-integrated components expect to find lists on the site itself. For example, the TODO component
 expects a list called "Tasks" with a "Name" column. In general, the class files in each component will describe the list structure
 needed.
 
