@@ -1,23 +1,64 @@
-This is a seed project I created for Angular 2 & TypeScript. It's not very smart right now, but 
-the goal is to establish a minimal skeleton that can be used for more complicated projects. I'm new
-to Angular 2, so this is really just a sandbox.
+# Vertex - Where SharePoint Meets Angular 2
 
-There are currently three build modes - two of these are production, one that implements AOT and one that does not. I'm
-curious how the two approaches will compare as this structure scales.
+Vertex is a seed project for SharePoint apps using Angular 2, TypeScript and Webpack. 
 
-Future goals: backendless (mocked) development and unit testing integration
+## Getting Started
 
-To run project:
-    npm install - install dependencies
-    npm run start - start webpack server
+### Get the Code
 
-Once server is up, navigate to localhost:3000
+```
+git clone https://github.com/brittanymoore/vertex.git
+cd vertex
+npm install
+```
 
-There are three ways to run the project:
+### Launch the App
 
-1) DEVELOPMENT mode: npm run start
+To run the app in development mode:
 
-2) PRODUCTION mode: npm run start:prod
+```
+npm run start
+```
 
-3) PRODUCTION mode (AOT compile): npm run start:prod:aot **this will not auto reload due to the compile step**
+Once the server is running, open a browser and navigate to localhost:3000.
+
+### Builds
+
+Vertex currently has four build modes: 
+
+| Build Mode              | Command                | Output   | EnableProdMode | Uglify | # Files | AOT     | MockBackend |
+| ----------------------- | ---------------------- | -------  | -------------- | ------ | ------  | ------- | ----------- |
+| Development             | npm run build:dev      | dev      | false          | false  | 1       | false   | true        |
+| Production              | npm run build:prod     | dist     | true           | true   | 2       | false   | true        |
+| Production (AOT)        | npm run build:prod:aot | dist-aot | true           | true   | 1       | true    | true        |
+| Production (SharePoint) | npm run build:prod:sp  | dist-sp  | true           | true   | 2       | false   | false       |
+
+Each mode using MockBackend has a start command similar to the one above, which can be used to launch the app in localhost:
+
+```
+npm run start:dev
+npm run start:prod
+npm run start:prod:aot
+```
+
+### SharePoint Integration
+
+Production (SharePoint) does not use mocked data, so it must be copied to SharePoint to validate. The dist-sp directory contains
+a minimal index.aspx file that can be used to load your app in SharePoint.
+
+In order to use index.aspx correctly, ensure the following paths are correct:
+
+* The <base> tag's href attribute
+* The <script /> tags containing the app
+
+Please note that the SharePoint-integrated components expect to find lists on the site itself. For example, the TODO component
+expects a list called "Tasks" with a "Name" column. In general, the class files in each component will describe the list structure
+needed.
+
+
+
+
+
+
+
 
