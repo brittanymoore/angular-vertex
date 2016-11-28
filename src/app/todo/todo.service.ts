@@ -12,8 +12,8 @@ import { Common } from './../app.common.service';
 @Injectable()
 export class ToDoService {
 
-    private toDoUrl = 'app/todo'; // url to web api
-    private headers = new Headers({'Content-Type': 'application/json'});
+    private toDoUrl = process.env.API_URL + "/lists/getByTitle('Tasks')/items"; 
+    private resultFilters = "?$select=Name,ID";
 
     constructor(
         private http: Http,
@@ -21,14 +21,20 @@ export class ToDoService {
 
     getTasks(): Observable<Task[]> {
         return this.http
-            .get(this.toDoUrl)
+            .get(this.toDoUrl + this.resultFilters, { headers: this.common.getHeaders() })
             .map(this.common.extractHttpData)
             .catch(this.common.handleError);
     }
 
     create(name: string): Observable<Task> {
+        let data:Object = {
+            Name: name,
+            __metadata: {
+                type: "SP.Data.TasksListItem"
+            }
+        }
         return this.http
-            .post(this.toDoUrl, JSON.stringify({name: name}), { headers: this.headers })
+            .post(this.toDoUrl, JSON.stringify(data), { headers: this.common.postHeaders() })
             .map(this.common.extractHttpData)
             .catch(this.common.handleError);
     }

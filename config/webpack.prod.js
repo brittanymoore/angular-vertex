@@ -1,8 +1,10 @@
 var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
+var common = require('./common');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const ENV = process.env.NODE_ENV = process.env.ENV = common.environments().production;
+const API_URL = process.env.API_URL = common.baseUrl(); 
 
 // Webpack Config
 var webpackConfig = {
@@ -31,8 +33,10 @@ var webpackConfig = {
     }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
+      'API_URL': JSON.stringify(API_URL),
       'process.env': {
-        'ENV': JSON.stringify(ENV)
+        'ENV': JSON.stringify(ENV),
+        'API_URL': JSON.stringify(API_URL)
       }
     })
   ],

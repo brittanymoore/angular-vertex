@@ -3,21 +3,23 @@ var path = require('path');
 var webpackMerge = require('webpack-merge');
 var common = require('./common');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = common.environments().development;
+const ENV = process.env.NODE_ENV = process.env.ENV = common.environments().sharepoint;
 const API_URL = process.env.API_URL = common.baseUrl(); 
 
 // Webpack Config
 var webpackConfig = {
   entry: {
     'main': './src/main.ts',
+    'vendor': './src/vendor.ts'
   },
 
   output: {
     publicPath: '',
-    path: path.resolve(__dirname, './../dev'),
+    path: path.resolve(__dirname, './../dist-sp'),
   },
 
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.min.js'}),
     new webpack.ContextReplacementPlugin(
       // The (\\|\/) piece accounts for path separators in *nix and Windows
       /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
@@ -26,6 +28,9 @@ var webpackConfig = {
         // your Angular Async Route paths relative to this root directory
       }
     ),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: { warnings: false }
+    }),
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(ENV),
       'API_URL': JSON.stringify(API_URL),
@@ -60,7 +65,7 @@ var defaultConfig = {
   devtool: 'source-map',
 
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].bundle.min.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },

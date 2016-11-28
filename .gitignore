@@ -2,9 +2,10 @@
 node_modules
 npm-debug.log
 
-dev
-dist
-dist-aot
+dev/**/*.js
+dist/**/*.js
+dist-aot/**/*.js
+dist-sp/**/*.js
 compiled-aot
 
 /src/**/*.js

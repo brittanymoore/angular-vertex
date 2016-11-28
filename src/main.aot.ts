@@ -8,7 +8,7 @@ import { enableProdMode } from '@angular/core';
 
 export const platformRef = platformBrowserDynamic();
 
-if (process.env.ENV === 'production') {
+if (process.env.ENV !== 'development') {
   enableProdMode();
 }
 

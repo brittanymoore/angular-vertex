@@ -12,7 +12,7 @@ export function mockBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
             // TODO
 
-            if (connection.request.url.match(/app\/todo/) &&
+            if (connection.request.url.match(/\/_api\/web\/lists\/getByTitle\(\'Tasks\'\)/) &&
             connection.request.method === RequestMethod.Get) {
 
                 let mock = new ToDoMock();
@@ -24,13 +24,13 @@ export function mockBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
             }
 
-            if (connection.request.url.match(/app\/todo/) &&
+            if (connection.request.url.match(/\/_api\/web\/lists\/getByTitle\(\'Tasks\'\)/) &&
             connection.request.method === RequestMethod.Post) {
 
                 let mock = new ToDoMock();
                 
                 let data = JSON.parse(connection.request.getBody());
-                let newTask = common.wrapHttpData(mock.addTask(data.name));
+                let newTask = common.wrapHttpData(mock.addTask(data.Name));
 
                 connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: newTask })));
 
