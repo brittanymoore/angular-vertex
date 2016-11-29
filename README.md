@@ -22,7 +22,7 @@ npm run start
 
 Once the server is running, open a browser and navigate to localhost:3000.
 
-### Builds
+### Build
 
 Vertex currently has four build modes: 
 
@@ -39,6 +39,24 @@ Each mode using MockBackend has a start command similar to the one above, which 
 npm run start:dev
 npm run start:prod
 npm run start:prod:aot
+```
+
+### Test
+
+Support is built-in for unit testing with Karma and end-to-end testing with Protractor (both use Jasmine).
+
+Unit tests should be added to a file named **.spec.ts somewhere in src directory tree. To run the tests:
+
+```
+npm run test:unit
+```
+
+E2E tests should be added to a file named **.e2e.ts somewhere in the src directory tree. To run the tests:
+
+```
+// run these commands in separate windows
+npm run start:dev
+npm run test:e2e
 ```
 
 ### SharePoint Integration
