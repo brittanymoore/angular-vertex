@@ -66,6 +66,7 @@
         "webpack": "2.1.0-beta.27",
         "webpack-dev-server": "2.1.0-beta.11",
         "webpack-merge": "^0.15.0",
+        "html-webpack-plugin": "^2.24.1",
         "rimraf": "^2.5.4",
         "karma": "^1.2.0",
         "karma-jasmine": "^1.0.2",

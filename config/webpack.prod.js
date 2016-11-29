@@ -2,6 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
 var common = require('./common');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = common.environments().production;
 const API_URL = process.env.API_URL = common.baseUrl(); 
@@ -38,7 +39,12 @@ var webpackConfig = {
         'ENV': JSON.stringify(ENV),
         'API_URL': JSON.stringify(API_URL)
       }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Vertex',
+      template: './config/index.template.ejs'
     })
+
   ],
 
   module: {
