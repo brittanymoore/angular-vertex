@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
 var webpackMerge = require('webpack-merge');
-var common = require('./common');
+var common = require('./webpack.common');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = common.environments().sharepoint;
 const API_URL = process.env.API_URL = common.baseUrl(); 

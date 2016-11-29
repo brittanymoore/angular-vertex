@@ -3,7 +3,7 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-        { pattern: 'config/test.bundle.js' }
+        { pattern: 'config/karma.test.bundle.js' }
     ],
     exclude: [
     ],
