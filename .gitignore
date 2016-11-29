@@ -10,6 +10,8 @@ compiled-aot
 
 /src/**/*.js
 /src/**/*.map
+/src/**/*.ngfactory.ts
+/src/**/*.css.shim.ts
 
 *.zip
 

@@ -2,10 +2,15 @@
 
 <div class="error" *ngIf="error">{{error}}</div>
 
-<div>
-    <label>Task name:</label> <input #taskName />
-    <button (click)="add(taskName.value); taskName.value=''">Add</button>    
-</div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <p>
+        <label>Task Name:</label> 
+        <input type="text" formControlName="taskName" id="taskName" />
+    <p>
+    <p>
+        <button type="submit" [disabled]="!form.valid" id="taskSubmit">Add</button>    
+    </p>
+</form>
 
 <ul>
     <li *ngFor="let task of tasks">

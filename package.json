@@ -27,7 +27,13 @@
         "start:prod": "npm run clean:prod && npm run server:prod",
         "start:prod:aot": "npm run clean:prod:aot && npm run compile:aot && npm run server:prod:aot",
         "start": "npm run start:dev",
-        "test": "./node_modules/.bin/karma start"
+        "karma": "karma",
+        "test:unit": "npm run karma start",
+        "webdriver-manager": "webdriver-manager",
+        "webdriver:update": "npm run webdriver-manager update",
+        "webdriver:start": "npm run webdriver-manager start",
+        "protractor": "protractor",
+        "test:e2e": "npm run protractor"
     },
     "license": "MIT",
     "dependencies": {
@@ -67,7 +73,9 @@
         "karma-webpack": "1.8.0",
         "karma-sourcemap-loader": "^0.3.7",
         "karma-spec-reporter": "^0.0.26",
-        "jasmine": "^2.5.2"
+        "jasmine": "^2.5.2",
+        "protractor": "^4.0.10",
+        "ts-node": "^1.7.0"
     },
     "repository": {
         "type": "git",
