@@ -47,10 +47,10 @@ body, html {
     height: 50px;
     display: table;
     width: 100%;
-    padding: 0 10px;
 }
 
 #footer span {
     display: table-cell;
     vertical-align: middle;
+    padding: 0 10px;
 }
