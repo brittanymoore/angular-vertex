@@ -1,0 +1,56 @@
+body, html {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    background-color: #8c7aae;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+}
+
+#header {
+    color: #ffffff;
+    background-color: #2d1657;
+    overflow: auto;
+    padding: 0 10px;
+}
+
+#header h1 {
+    font-weight: normal;
+    margin: 0;
+    padding: 10px 0;
+    font-size: 24px;
+}
+
+#header a,
+#header a:visited,
+#header a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#wrapper {
+    height: auto;
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+#main {
+    padding: 20px;
+}
+
+#footer-spacer {
+    height: 50px;
+}
+
+#footer {
+    color: #ffffff;
+    background-color: #18063a;
+    height: 50px;
+    display: table;
+    width: 100%;
+    padding: 0 10px;
+}
+
+#footer span {
+    display: table-cell;
+    vertical-align: middle;
+}

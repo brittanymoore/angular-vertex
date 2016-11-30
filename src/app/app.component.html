@@ -1,7 +1,20 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="/home" routerLinkActive="active">Home</a>
-    <a routerLink="/todo" routerLinkActive="active">To-do List</a>
-</nav>
-<router-outlet></router-outlet>
+<div id="wrapper">
+
+    <header id="header">
+        <a routerLink="/home" routerLinkActive="active">
+            <h1>{{title}}</h1>
+        </a>
+    </header>
+
+    <main id="main">
+        <router-outlet></router-outlet>
+    </main>
+
+    <div id="footer-spacer"></div>
+
+</div>
+
+<footer id="footer">
+    <span>2016</span>
+</footer>
 
