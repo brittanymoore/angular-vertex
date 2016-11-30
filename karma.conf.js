@@ -3,12 +3,12 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-        { pattern: 'config/karma.test.bundle.js' }
+        { pattern: './config/karma.test.bundle.js' }
     ],
     exclude: [
     ],
     preprocessors: {
-        'config/test.bundle.js': ['webpack', 'sourcemap']
+        'config/karma.test.bundle.js': ['webpack', 'sourcemap']
     },
     webpack: require('./config/webpack.dev.js'),
     reporters: ['spec'],
