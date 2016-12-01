@@ -4,8 +4,16 @@ import { ToDoMock } from './models/todo.mock';
 
 import { Common } from './../app.common.service';
 
-export function mockBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend, common: Common) {
-    
+// required for typedoc
+declare var process: {
+   env: {
+       ENV: string,
+       API_URL: string
+   },
+};
+
+export function mockBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend, common: Common) {  
+
     // disable mock backend when running in sharepoint
     if (process.env.ENV === 'sharepoint') {
 

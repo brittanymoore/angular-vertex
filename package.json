@@ -15,10 +15,6 @@
         "build:prod:aot": "npm run clean:prod:aot && npm run compile:aot && webpack --progress --config ./config/webpack.prod.aot.js",
         "build:prod:sp": "npm run clean:prod:sp && webpack --progress --config ./config/webpack.prod.sp.js",
         "build": "npm run build:dev",
-        "watch:dev": "npm run build:dev --watch",
-        "watch:prod": "npm run build:prod --watch",
-        "watch:prod:aot": "npm run build:prod:aot --watch",
-        "watch": "npm run watch:dev",
         "server:dev": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress --port 3000 --content-base dev",
         "server:prod": "webpack-dev-server --config ./config/webpack.prod.js --inline --progress --port 3000 --content-base dist",
         "server:prod:aot": "webpack-dev-server --config ./config/webpack.prod.aot.js --inline --progress --port 3000 --content-base dist-aot",
@@ -33,7 +29,8 @@
         "webdriver:update": "npm run webdriver-manager update",
         "webdriver:start": "npm run webdriver-manager start",
         "protractor": "protractor",
-        "test:e2e": "npm run protractor"
+        "test:e2e": "npm run protractor",
+        "typedoc": "typedoc --options ./config/typedoc.json --tsconfig ./config/typedoc.tsconfig.json ./src"
     },
     "license": "MIT",
     "dependencies": {
@@ -56,6 +53,7 @@
     "devDependencies": {
         "@types/node": "^6.0.48",
         "@types/jasmine": "^2.2.34",
+        "@types/core-js": "^0.9.35",
         "awesome-typescript-loader": "^2.2.4",
         "angular2-router-loader": "^0.3.4",
         "angular2-template-loader": "^0.6.0",
@@ -67,6 +65,7 @@
         "webpack-dev-server": "2.1.0-beta.11",
         "webpack-merge": "^0.15.0",
         "html-webpack-plugin": "^2.24.1",
+        "typedoc": "^0.5.1",
         "rimraf": "^2.5.4",
         "karma": "^1.2.0",
         "karma-jasmine": "^1.0.2",

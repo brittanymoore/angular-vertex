@@ -1,0 +1,8 @@
+{
+    "out": "./docs",
+    "module": "commonjs",
+    "mode": "modules",
+    "target": "es6",
+    "exclude": "**/*+(e2e|spec|aot).ts",
+    "theme": "minimal"
+}

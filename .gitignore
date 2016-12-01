@@ -7,6 +7,7 @@ dist
 dist-aot
 dist-sp
 compiled-aot
+docs
 
 /src/**/*.js
 /src/**/*.map

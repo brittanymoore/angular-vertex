@@ -8,6 +8,14 @@ import { enableProdMode } from '@angular/core';
 
 export const platformRef = platformBrowserDynamic();
 
+// required for typedoc
+declare var process: {
+   env: {
+       ENV: string,
+       API_URL: string
+   },
+};
+
 if (process.env.ENV !== 'development') {
   enableProdMode();
 }

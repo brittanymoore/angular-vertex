@@ -1,6 +1,6 @@
-# Vertex - Where SharePoint Meets Angular 2
+# Vertex
 
-Vertex is a seed project for SharePoint apps using Angular 2, TypeScript and Webpack. 
+Vertex is a seed project using Angular 2, TypeScript and Webpack.
 
 ## Getting Started
 

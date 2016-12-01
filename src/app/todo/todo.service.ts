@@ -9,6 +9,14 @@ import 'rxjs/add/operator/catch';
 import { Task } from './task';
 import { Common } from './../app.common.service';
 
+// required for typedoc
+declare var process: {
+   env: {
+       ENV: string,
+       API_URL: string
+   },
+};
+
 @Injectable()
 export class ToDoService {
 
