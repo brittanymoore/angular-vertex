@@ -53,7 +53,7 @@ var webpackConfig = {
       {
         test: /\.ts$/,
         loaders: [
-          'awesome-typescript-loader',
+          'awesome-typescript-loader?tsconfig=./config/tsconfig.json',
           'angular2-template-loader',
           'angular2-router-loader'
         ]
