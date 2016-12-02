@@ -3,6 +3,7 @@ var path = require('path');
 var webpackMerge = require('webpack-merge');
 var common = require('./webpack.common');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ngtools = require('@ngtools/webpack');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = common.environments().production;
 const API_URL = process.env.API_URL = common.baseUrl(); 
@@ -41,6 +42,10 @@ var webpackConfig = {
     new HtmlWebpackPlugin({
       title: 'Vertex',
       template: './config/index.template.ejs'
+    }),
+    new ngtools.AotPlugin({
+      tsConfigPath: './tsconfig.aot.json',
+      entryModule: './src/app/app.module#AppModule'
     })
   ],
 
@@ -50,9 +55,7 @@ var webpackConfig = {
       {
         test: /\.ts$/,
         loaders: [
-          'awesome-typescript-loader',
-          'angular2-template-loader',
-          'angular2-router-loader'
+          '@ngtools/webpack'
         ]
       },
       { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
@@ -65,7 +68,8 @@ var webpackConfig = {
 
 // Our Webpack Defaults
 var defaultConfig = {
-  devtool: 'source-map',
+
+  devtool: false,
 
   output: {
     filename: '[name]-aot.bundle.min.js',
@@ -93,6 +97,7 @@ var defaultConfig = {
     clearImmediate: false,
     setImmediate: false
   }
+
 };
 
 module.exports = webpackMerge(defaultConfig, webpackConfig);

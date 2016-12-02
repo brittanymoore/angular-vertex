@@ -1,19 +1,15 @@
 import './vendor';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
 import { AppModuleNgFactory } from './../compiled-aot/src/app/app.module.ngfactory';
-
 import { enableProdMode } from '@angular/core';
-
-export const platformRef = platformBrowserDynamic();
 
 if (process.env.ENV !== 'development') {
   enableProdMode();
 }
 
-export function main() {
-  return platformRef.bootstrapModuleFactory(AppModuleNgFactory).catch(err => console.error(err));
+function main() {
+  return platformBrowserDynamic().bootstrapModuleFactory(AppModuleNgFactory).catch(err => console.error(err));
 }
 
 // support async tag or hmr
