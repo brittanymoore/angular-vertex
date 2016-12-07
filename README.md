@@ -26,12 +26,12 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 Vertex currently has four build modes: 
 
-| Build Mode        | Command        | Output   | EnableProdMode | Uglify | # Files | AOT     | MockBackend |
-| ----------------- | -------------- | -------  | -------------- | ------ | ------  | ------- | ----------- |
-| Dev               | build:dev      | dev      | false          | false  | 1       | false   | true        |
-| Prod              | build:prod     | dist     | true           | true   | 2       | false   | true        |
-| Prod (AOT)        | build:prod:aot | dist-aot | true           | true   | 1       | true    | true        |
-| Prod (SharePoint) | build:prod:sp  | dist-sp  | true           | true   | 2       | false   | false       |
+| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT     | MockBackend |
+| ----------------- | -------------- | -------  | -------------- | ------ | ------- | ----------- |
+| Dev               | build:dev      | dev      | false          | false  | false   | true        |
+| Prod              | build:prod     | dist     | true           | true   | false   | true        |
+| Prod (AOT)        | build:prod:aot | dist-aot | true           | true   | true    | true        |
+| Prod (SharePoint) | build:prod:sp  | dist-sp  | true           | true   | false   | false       |
 
 Each mode using MockBackend has a start command similar to the one above, which can be used to launch the app in localhost:
 
@@ -61,8 +61,9 @@ npm run test:e2e
 
 ### SharePoint Integration
 
-Production (SharePoint) does not use mocked data, so it must be copied to SharePoint to validate. The dist-sp directory contains
-a minimal index.aspx file that can be used to load your app in SharePoint.
+Production (SharePoint) does not use mocked data, so it must be copied to SharePoint to validate. A template file for index in 
+SharePoint can be found in config/index.template.sp.aspx. This contains the minimal SharePoint controls needed to display the
+app and access the REST API.
 
 In order to use index.aspx correctly, ensure the following paths are correct:
 
