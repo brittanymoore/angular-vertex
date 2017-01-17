@@ -35,6 +35,7 @@ body, html {
 
 #main {
     padding: 20px;
+    display: block;
 }
 
 #footer-spacer {
