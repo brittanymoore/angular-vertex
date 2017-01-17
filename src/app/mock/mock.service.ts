@@ -1,5 +1,7 @@
 import { Http, BaseRequestOptions, Response, ResponseOptions, RequestMethod, XHRBackend } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
+
+// mocks
 import { ToDoMock } from './models/todo.mock';
 
 import { Common } from './../app.common.service';

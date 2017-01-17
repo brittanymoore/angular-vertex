@@ -1,34 +1,107 @@
+import { async, TestBed, inject, getTestBed } from '@angular/core/testing';
 
-import { ToDoService } from './todo.service';
-import { Common } from './../app.common.service';
 import { MockModule } from './../mock/mock.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Common } from './../app.common.service';
 
-import { HttpModule } from '@angular/http';
-import { TestBed, inject, async, getTestBed } from '@angular/core/testing';
+import { ToDoComponent } from './todo.component';
+import { ToDoService } from './todo.service';
 
-describe('todo service', () => {
+import { ToDoMock } from './../mock/models/todo.mock';
+
+import { Observable } from 'rxjs/Rx';
+
+class MockToDoService extends ToDoService { 
+    mock: ToDoMock;
+    constructor() {
+        super(null, null);
+        this.mock = new ToDoMock();
+    }
+    getTasks() {
+        return Observable.of(this.mock.getTasks());
+    }
+    create(name) {
+        return Observable.of(this.mock.addTask(name));
+    }
+}
+
+describe('UNIT: ToDo', () => {
 
     beforeEach(() => {
+
         TestBed.configureTestingModule({
+            declarations: [
+                ToDoComponent
+            ],
             imports: [
-                HttpModule,
-                MockModule
+                ReactiveFormsModule
             ],
             providers: [
-                ToDoService,
-                Common
+                { provide: ToDoService, useClass: MockToDoService }
             ]
         });
+
+        TestBed.overrideComponent(ToDoComponent, {
+            set: {
+                template: "<div>Test</div>"
+            }
+        })
+
         TestBed.compileComponents();
+
     });
 
-    it('sanity check', async(() => {
-        let todoService: ToDoService = getTestBed().get(ToDoService);
-        todoService.getTasks().subscribe(
-            (tasks) => {
-                expect(tasks.length).toBe(2);
-            }
-        )
-    }))
+    describe("Controller:", () => {
+
+        let fixture, toDo, mock, promise, toDoService;
+
+        beforeEach(() => {
+
+            mock = new ToDoMock();
+
+            toDoService = TestBed.get(ToDoService);
+
+            fixture = TestBed.createComponent(ToDoComponent);
+            toDo = fixture.componentInstance;
+
+            spyOn(toDoService, "getTasks").and.callThrough();
+            spyOn(toDoService, "create").and.callThrough();
+
+        });
+
+        it("Should initialize correctly.", () => {
+
+            expect(toDo.title).toBe("To-do List");  
+
+            toDo.ngOnInit();
+            expect(toDoService.getTasks).toHaveBeenCalled();
+            expect(toDo.tasks.length).toBe(2);
+
+        });
+
+        describe("Get Tasks:", () => {
+
+            it("Should call service to get tasks.", () => {            
+                toDo.getTasks();
+                expect(toDoService.getTasks).toHaveBeenCalled();
+            });
+
+            it("Should set internal tasks variable based on service results.", () => {
+                toDo.getTasks();
+                expect(toDo.tasks.length).toBe(2);               
+            });
+
+        });
+
+        describe("Add Task:", () => {
+
+            it("Should call service to add task.", () => {
+                toDo.add("test");
+                expect(toDoService.create).toHaveBeenCalled();
+            });
+
+        });
+
+    });
 
 });

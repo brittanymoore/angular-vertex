@@ -68,7 +68,9 @@ export class Common {
             { 
                 'Content-Type': 'application/json;odata=verbose',
                 'Accept': 'application/json;odata=verbose',
-                'X-RequestDigest': requestDigest
+                'X-RequestDigest': requestDigest//,
+                //"IF-MATCH": "*",
+                //"X-HTTP-Method": "MERGE"
             }
         );
     }

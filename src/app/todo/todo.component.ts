@@ -11,7 +11,7 @@ import { ToDoService } from './todo.service';
 
 export class ToDoComponent implements OnInit {
 
-    tasks: Task[];
+    tasks: Task[] = [];
     title:string = "To-do List";
     error: any;
     form: FormGroup;
