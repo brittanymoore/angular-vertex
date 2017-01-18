@@ -20,11 +20,13 @@ TestBed.initTestEnvironment(
     platformBrowserDynamicTesting()
 );
 
-// Sanity test
-describe('Sanity Check - Karma is working', () => {
-    it('1 + 1 => 2', () => {
-        expect(1 + 1).toBe(2);
+// Make sure Karma is running correctly.
+describe("Sanity Check:", () => {
+
+    it("Karma is working.", () => {
+        expect(0).toBe(0);
     });
+
 });
 
 // recursively seek out files ending with .spec.ts

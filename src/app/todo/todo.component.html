@@ -8,11 +8,11 @@
         <input type="text" formControlName="taskName" id="taskName" />
     <p>
     <p>
-        <button type="submit" [disabled]="!form.valid" id="taskSubmit">Add</button>    
+        <input type="submit" [disabled]="!form.valid" id="taskAdd" value="Add" />    
     </p>
 </form>
 
-<ul>
+<ul id="taskList">
     <li *ngFor="let task of tasks">
         <div>{{task.Name}}</div>
     </li>
