@@ -44,7 +44,6 @@ var webpackConfig = {
       title: 'Vertex',
       template: './config/index.template.ejs'
     })
-
   ],
 
   module: {
