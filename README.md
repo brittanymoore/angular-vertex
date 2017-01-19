@@ -74,6 +74,10 @@ Note that the SharePoint-integrated components expect to find lists on the site 
 expects a list called "Tasks" with a "Name" column. In general, the class files in each component will describe the list structure
 needed.
 
+# Additional Notes
+
+Currently using TypeScript version 2.1.1 to avoid conflict with awesome-typescript-loader.
+
 
 
 

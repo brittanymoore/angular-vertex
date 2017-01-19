@@ -45,7 +45,7 @@ var webpackConfig = {
     }),
     new ngtools.AotPlugin({
       tsConfigPath: './tsconfig.aot.json',
-      entryModule: './src/app/app.module#AppModule'
+      entryModule: __dirname + './../src/app/app.module#AppModule'
     })
   ],
 
