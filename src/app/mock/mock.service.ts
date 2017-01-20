@@ -4,20 +4,18 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 // mocks
 import { ToDoMock } from './models/todo.mock';
 
-import { Common } from './../app.common.service';
+export function mockBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {  
 
-// required for typedoc
-declare var process: {
-   env: {
-       ENV: string,
-       API_URL: string
-   },
-};
+    function wrapHttpData(data: any):Object {
+        return {
+            "d": {
+                "results": data
+            }
+        }
+    }
 
-export function mockBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend, common: Common) {  
-
-    // disable mock backend when running in sharepoint
-    if (process.env.ENV === 'sharepoint') {
+    // disable mock backend based on environment variable
+    if (!process.env.USE_MOCK) {
 
         return new Http(realBackend, options);
 
@@ -33,7 +31,7 @@ export function mockBackendFactory(backend: MockBackend, options: BaseRequestOpt
                 connection.request.method === RequestMethod.Get) {
 
                     let mock = new ToDoMock();
-                    let tasks = common.wrapHttpData(mock.getTasks());
+                    let tasks = wrapHttpData(mock.getTasks());
 
                     connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: tasks })));
 
@@ -47,7 +45,7 @@ export function mockBackendFactory(backend: MockBackend, options: BaseRequestOpt
                     let mock = new ToDoMock();
                     
                     let data = JSON.parse(connection.request.getBody());
-                    let newTask = common.wrapHttpData(mock.addTask(data.Name));
+                    let newTask = wrapHttpData(mock.addTask(data.Name));
 
                     connection.mockRespond(new Response(new ResponseOptions({ status: 200, body: newTask })));
 
@@ -70,6 +68,6 @@ export function mockBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
 export let mockBackendProvider = {
     provide: Http,
-    deps: [ MockBackend, BaseRequestOptions, XHRBackend, Common ],
+    deps: [ MockBackend, BaseRequestOptions, XHRBackend ],
     useFactory: mockBackendFactory
 }

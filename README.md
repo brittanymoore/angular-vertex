@@ -1,15 +1,18 @@
 # Vertex
 
-Vertex is a seed project using Angular 2, TypeScript and Webpack.
+Vertex is an Angular seed project using TypeScript and Webpack. It contains an example module
+that can be used as a reference to get started, routing, backendless support, multiple build paths
+(including one using ahead-of-time compilation), and a testing structure for unit and end-to-end testing.
 
 ## Getting Started
 
 ### Get the Code
 
 ```
-git clone https://github.com/brittanymoore/vertex.git
+git clone https://github.com/brittanymoore/angular-vertex.git
 cd vertex
 npm install
+npm run webdriver:update
 ```
 
 ### Launch the App
@@ -24,16 +27,15 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 ### Build
 
-Vertex currently has four build modes: 
+Vertex currently has three build modes: 
 
-| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT     | MockBackend |
-| ----------------- | -------------- | -------  | -------------- | ------ | ------- | ----------- |
-| Dev               | build:dev      | dev      | false          | false  | false   | true        |
-| Prod              | build:prod     | dist     | true           | true   | false   | true        |
-| Prod (AOT)        | build:prod:aot | dist-aot | true           | true   | true    | true        |
-| Prod (SharePoint) | build:prod:sp  | dist-sp  | true           | true   | false   | false       |
+| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT     |
+| ----------------- | -------------- | -------  | -------------- | ------ | ------- |
+| Dev               | build:dev      | dev      | false          | false  | false   |
+| Prod              | build:prod     | dist     | true           | true   | false   |
+| Prod (AOT)        | build:prod:aot | dist-aot | true           | true   | true    |
 
-Each mode using MockBackend has a start command similar to the one above, which can be used to launch the app in localhost:
+Each mode has a start command similar to the one above, which can be used to launch the app in localhost:
 
 ```
 npm run start:dev
@@ -59,24 +61,17 @@ npm run start:dev
 npm run test:e2e
 ```
 
-### SharePoint Integration
+### Mocking
 
-Production (SharePoint) does not use mocked data, so it must be copied to SharePoint to validate. A template file for index in 
-SharePoint can be found in config/index.template.sp.aspx. This contains the minimal SharePoint controls needed to display the
-app and access the REST API.
+Vertex comes with a 'mock' module that provides backendless development for the rest of the application. It 
+currently contains mocks for the To-do module that can be used as a starting point. These mocks are also used
+in the e2e tests for the To-do module.
 
-In order to use index.aspx correctly, ensure the following paths are correct:
+By default, the services mock SharePoint REST API. You can substitute any other backend by updating
+the web service calls and helpers in todo/todo.service.ts and mock/mock.service.ts. 
 
-* base tag's href attribute
-* script tags containing the app
-
-Note that the SharePoint-integrated components expect to find lists on the site itself. For example, the TODO component
-expects a list called "Tasks" with a "Name" column. In general, the class files in each component will describe the list structure
-needed.
-
-# Additional Notes
-
-Currently using TypeScript version 2.1.1 to avoid conflict with awesome-typescript-loader.
+In order to run the application using actual HTTP calls, change the USE_MOCK variable in the webpack config
+to false before building.
 
 
 

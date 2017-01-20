@@ -9,18 +9,10 @@ import 'rxjs/add/operator/catch';
 import { Task } from './task';
 import { Common } from './../app.common.service';
 
-// required for typedoc
-declare var process: {
-   env: {
-       ENV: string,
-       API_URL: string
-   },
-};
-
 @Injectable()
 export class ToDoService {
 
-    private toDoUrl = process.env.API_URL + "/lists/getByTitle('Tasks')/items"; 
+    private toDoUrl = process.env.API_URL + "/_api/web/lists/getByTitle('Tasks')/items"; 
     private resultFilters = "?$select=Name,ID";
 
     constructor(
@@ -29,8 +21,8 @@ export class ToDoService {
 
     getTasks(): Observable<Task[]> {
         return this.http
-            .get(this.toDoUrl + this.resultFilters, { headers: this.common.getHeaders() })
-            .map(this.common.extractHttpData)
+            .get(this.toDoUrl + this.resultFilters, { headers: this.getHeaders() })
+            .map(this.extractHttpData)
             .catch(this.common.handleError);
     }
 
@@ -42,9 +34,41 @@ export class ToDoService {
             }
         }
         return this.http
-            .post(this.toDoUrl, JSON.stringify(data), { headers: this.common.postHeaders() })
-            .map(this.common.extractHttpData)
+            .post(this.toDoUrl, JSON.stringify(data), { headers: this.postHeaders() })
+            .map(this.extractHttpData)
             .catch(this.common.handleError);
+    }
+
+    // helpers
+
+    private extractHttpData(res: Response):Object {
+        let body = res.json();
+        // In SharePoint, GETs store data in d.results, while POSTs store data in d.
+        return body.d.results || body.d || { };
+    }
+
+    private getHeaders():Headers {
+        return new Headers(
+            {
+                'Accept': 'application/json;odata=verbose'
+            }
+        );
+    }
+
+    private postHeaders():Headers {
+        // requestDigest is a SharePoint-specific requirement, but it doesn't interfere with MockBackend
+        var requestDigestElem = <HTMLInputElement>document.getElementById("__REQUESTDIGEST");
+        var requestDigest = (requestDigestElem != null) ? requestDigestElem.value : "";
+        
+        return new Headers(
+            { 
+                'Content-Type': 'application/json;odata=verbose',
+                'Accept': 'application/json;odata=verbose',
+                'X-RequestDigest': requestDigest//,
+                //"IF-MATCH": "*",
+                //"X-HTTP-Method": "MERGE"
+            }
+        );
     }
 
 }
