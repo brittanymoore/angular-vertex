@@ -21,6 +21,8 @@ var webpackConfig = {
         path: path.resolve(__dirname, './../dev'),
     },
 
+    devtool: 'inline-source-map', 
+
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {

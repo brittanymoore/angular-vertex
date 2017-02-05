@@ -2,7 +2,6 @@ import { async, TestBed, inject, getTestBed } from '@angular/core/testing';
 
 import { MockModule } from './../mock/mock.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Common } from './../app.common.service';
 
 import { ToDoComponent } from './todo.component';
 import { ToDoService } from './todo.service';

@@ -22,8 +22,6 @@ exports.config = {
         })
     ],
 
-    devtool: 'inline-source-map', 
-
     output: {
         filename: '[name].bundle.js',
         sourceMapFilename: '[name].map',

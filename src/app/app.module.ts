@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { Common } from './app.common.service';
 import { ToDoModule } from './todo/todo.module';
 import { MockModule } from './mock/mock.module';
 import { AppRoutingModule, routedComponents } from './app.routing.module';
@@ -23,7 +22,7 @@ import { AppRoutingModule, routedComponents } from './app.routing.module';
         AppComponent,
         routedComponents
     ],
-    providers: [ Common ],
+    providers: [ ],
     bootstrap: [ AppComponent ]
 })
 

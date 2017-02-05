@@ -7,7 +7,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Task } from './task';
-import { Common } from './../app.common.service';
 
 @Injectable()
 export class ToDoService {
@@ -16,14 +15,14 @@ export class ToDoService {
     private resultFilters = "?$select=Name,ID";
 
     constructor(
-        private http: Http,
-        private common: Common) { }
+        private http: Http
+    ) { }
 
     getTasks(): Observable<Task[]> {
         return this.http
             .get(this.toDoUrl + this.resultFilters, { headers: this.getHeaders() })
             .map(this.extractHttpData)
-            .catch(this.common.handleError);
+            .catch(this.handleError);
     }
 
     create(name: string): Observable<Task> {
@@ -36,10 +35,15 @@ export class ToDoService {
         return this.http
             .post(this.toDoUrl, JSON.stringify(data), { headers: this.postHeaders() })
             .map(this.extractHttpData)
-            .catch(this.common.handleError);
+            .catch(this.handleError);
     }
 
     // helpers
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occured', error);
+        return Promise.reject(error.message || error);
+    }
 
     private extractHttpData(res: Response):Object {
         let body = res.json();
