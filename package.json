@@ -1,6 +1,6 @@
 {
     "name": "angular-vertex",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Seed Project for Angular",
     "scripts": {
         "clean": "rimraf dev/*.js dev/*.map",
