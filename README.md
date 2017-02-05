@@ -7,8 +7,8 @@ The master branch contains:
 * angular (2.3.1)
 * webpack (2.2.0)
 * typescript (2.0.10)
-* unit testing with Karma
-* end-to-end testing with Protractor
+* unit testing with karma
+* end-to-end testing with protractor
 * backendless development wih mocks
 
 ## Getting Started
@@ -34,7 +34,7 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 ### Build
 
-Vertex currently has three build modes: 
+Vertex currently has the following build modes.
 
 | Build Mode        | Command        | Output   | EnableProdMode | Uglify |
 | ----------------- | -------------- | -------  | -------------- | ------ |
