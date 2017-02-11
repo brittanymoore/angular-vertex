@@ -9,6 +9,8 @@ describe("E2E: ToDo:", () => {
         // Redirect to todo route.
         browser.get('/todo');
 
+        browser.waitForAngular();
+
         // Get relevant form controls.
         nameInput = element(by.id('taskName'));
         addButton = element(by.id('taskAdd'));

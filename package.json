@@ -3,19 +3,13 @@
     "version": "1.0.0",
     "description": "Seed Project for Angular",
     "scripts": {
-        "clean": "rimraf dev/*.js dev/*.map",
-        "clean:prod": "rimraf dist/*.js",
-        "build": "npm run clean && webpack --progress --config ./config/webpack.dev.js",
-        "build:prod": "npm run clean:prod && webpack --progress --config ./config/webpack.prod.js",
-        "server": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress --port 3000 --content-base dev",
-        "server:prod": "webpack-dev-server --config ./config/webpack.prod.js --inline --progress --port 3000 --content-base dist",
-        "start": "npm run clean && npm run server",
-        "start:prod": "npm run clean:prod && npm run server:prod",
+        "build": "webpack --progress --config ./config/webpack.dev.js",
+        "build:prod": "webpack --progress --config ./config/webpack.prod.js",
+        "start": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress --port 3000 --content-base dev",
+        "start:prod": "webpack-dev-server --config ./config/webpack.prod.js --inline --progress --port 3000 --content-base dist",
         "test:unit": "karma start ./config/karma.conf.js ",
         "webdriver-manager": "webdriver-manager",
-        "webdriver:update": "npm run webdriver-manager update",
-        "protractor": "protractor ./config/protractor.conf.js",
-        "test:e2e": "npm run protractor"
+        "test:e2e": "protractor ./config/protractor.conf.js"
     },
     "license": "MIT",
     "dependencies": {
@@ -49,7 +43,6 @@
         "webpack-dev-server": "2.2.0",
         "webpack-merge": "0.15.0",
         "html-webpack-plugin": "2.24.1",
-        "rimraf": "2.5.4",
         "karma": "1.2.0",
         "karma-jasmine": "1.0.2",
         "karma-chrome-launcher": "2.0.0",
