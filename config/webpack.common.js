@@ -30,23 +30,29 @@ exports.config = {
 
     resolve: {
         extensions: [ '.ts', '.js' ],
+        // modules is required when webpack config is not in root directory.
         modules: [ path.resolve(__dirname, './../node_modules') ]
+    },
+
+    module: {
+        rules: [
+            {
+                test: /\.ts$/,
+                use: [
+                    'awesome-typescript-loader?tsconfig=./tsconfig.json',
+                    'angular2-template-loader',
+                    'angular2-router-loader'
+                ]
+            },
+            { test: /\.css$/, use: ['to-string-loader', 'css-loader'] },
+            { test: /\.html$/, loader: 'raw-loader' }
+        ]
     },
 
     devServer: {
         historyApiFallback: true,
-        watchOptions: { aggregateTimeout: 300, poll: 1000 }
-    },
-
-    node: {
-        global: true,
-        crypto: 'empty',
-        __dirname: true,
-        __filename: true,
-        process: true,
-        Buffer: false,
-        clearImmediate: false,
-        setImmediate: false
+        watchOptions: { aggregateTimeout: 300, poll: 1000 },
+        port: 3000
     }
 
 };

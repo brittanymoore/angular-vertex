@@ -31,22 +31,7 @@ var webpackConfig = {
                 'USE_MOCK': JSON.stringify(USE_MOCK)
             }
         })
-    ],
-
-    module: {
-        loaders: [
-            {
-                test: /\.ts$/,
-                loaders: [
-                    'awesome-typescript-loader?tsconfig=./tsconfig.json',
-                    'angular2-template-loader',
-                    'angular2-router-loader'
-                ]
-            },
-            { test: /\.css$/, loaders: ['to-string-loader', 'css-loader'] },
-            { test: /\.html$/, loader: 'raw-loader' }
-        ]
-    }
+    ]
 
 };
 
