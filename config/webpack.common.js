@@ -4,25 +4,15 @@ var path = require('path');
 // plugins
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-exports.apiUrl = ""; // can be used to prepend a URL to web service calls without repetition
+exports.apiUrl = ""; // can be used to prepend a static URL to web service calls
 exports.config = {
 
-    plugins: [
-        new webpack.ContextReplacementPlugin(
-            // The (\\|\/) piece accounts for path separators in *nix and Windows
-            /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
-            path.resolve(__dirname, './../src'),
-            {
-                // your Angular Async Route paths relative to this root directory
-            }
-        ),
-        new HtmlWebpackPlugin({
-            title: 'Vertex',
-            template: './config/index.template.ejs'
-        })
-    ],
+    entry: {
+        'main': './src/main.ts'
+    },
 
     output: {
+        publicPath: '',
         filename: '[name].bundle.js',
         sourceMapFilename: '[name].map',
         chunkFilename: '[id].chunk.js'
@@ -47,11 +37,25 @@ exports.config = {
             { test: /\.css$/, use: ['to-string-loader', 'css-loader'] },
             { test: /\.html$/, loader: 'raw-loader' }
         ]
-    },
+    },    
+
+    plugins: [
+        new webpack.ContextReplacementPlugin(
+            // The (\\|\/) piece accounts for path separators in *nix and Windows
+            /angular(\\|\/)core(\\|\/)src(\\|\/)linker/,
+            path.resolve(__dirname, './../src'),
+            {
+                // your Angular Async Route paths relative to this root directory
+            }
+        ),
+        new HtmlWebpackPlugin({
+            title: 'Vertex',
+            template: './config/index.template.ejs'
+        })
+    ],
 
     devServer: {
         historyApiFallback: true,
-        watchOptions: { aggregateTimeout: 300, poll: 1000 },
         port: 3000
     }
 

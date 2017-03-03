@@ -1,8 +1,4 @@
-import { NgModule } from '@angular/core'
-import { BrowserModule } from '@angular/platform-browser';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-// Polyfills
+// polyfills
 import 'ie-shim'; // Internet Explorer 9 support
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';

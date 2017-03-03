@@ -12,12 +12,7 @@ const USE_MOCK = process.env.USE_MOCK = true;
 
 var webpackConfig = {
 
-    entry: {
-        'main': './src/main.ts',
-    },
-
     output: {
-        publicPath: '',
         path: path.resolve(__dirname, './../dev'),
     },
 

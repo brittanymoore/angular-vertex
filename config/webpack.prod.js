@@ -12,12 +12,7 @@ const USE_MOCK = process.env.USE_MOCK = true;
 
 var webpackConfig = {
 
-    entry: {
-        'main': './src/main.ts'
-    },
-
     output: {
-        publicPath: '',
         path: path.resolve(__dirname, './../dist'),
     },
 
@@ -25,7 +20,7 @@ var webpackConfig = {
 
     plugins: [
         new webpack.optimize.UglifyJsPlugin({
-            compress: { warnings: false }
+            sourceMap: true
         }),
         new webpack.DefinePlugin({
             'process.env': {

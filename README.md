@@ -3,8 +3,10 @@
 angular-vertex is a seed repository for angular (2.0+) and webpack. For 
 angularjs (1.0), see [angularjs-vertex](https://github.com/brittanymoore/angularjs-vertex).
 
+An AOT version of this app can be found at [angular-vertex-aot](https://github.com/brittanymoore/angular-vertex-aot).
+
 The master branch contains:
-* angular (2.3.1)
+* angular (2.4.9)
 * webpack (2.2.0)
 * typescript (2.0.10)
 * unit testing with karma
@@ -19,7 +21,6 @@ The master branch contains:
 git clone https://github.com/brittanymoore/angular-vertex.git
 cd angular-vertex
 npm install
-npm run webdriver:update
 ```
 
 ### Launch the App
@@ -61,6 +62,9 @@ npm run test:unit
 E2E tests should be added to a file named **.e2e.ts somewhere in the src directory tree. To run the tests:
 
 ```
+// initialize or update webdriver
+npm run webdriver-manager -- update
+
 // run these commands in separate windows
 npm run start
 npm run test:e2e
