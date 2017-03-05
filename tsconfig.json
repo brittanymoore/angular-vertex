@@ -1,22 +1,17 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
-        "outDir": "dist",
         "rootDir": ".",
+        "outDir": "dist", 
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es5",
+        "lib": ["es6", "dom"],  
+        "typeRoots": ["node_modules/@types"],
+        "types": ["node", "jasmine"],  
         "sourceMap": true,
         "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "typeRoots": [
-        "node_modules/@types"
-        ],
-        "lib": ["es6", "dom"],
-        "types": ["node", "jasmine"]
+        "experimentalDecorators": true
     },
-    "exclude": [
-        "node_modules"
-    ],
     "compileOnSave": false,
     "buildOnSave": false
 }
