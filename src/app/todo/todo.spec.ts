@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Rx';
 class MockToDoService extends ToDoService { 
     mock: ToDoMock;
     constructor() {
-        super(null, null);
+        super(null);
         this.mock = new ToDoMock();
     }
     getTasks() {

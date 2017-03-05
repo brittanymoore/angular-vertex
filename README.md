@@ -7,8 +7,8 @@ An AOT version of this app can be found at [angular-vertex-aot](https://github.c
 
 The master branch contains:
 * angular (2.4.9)
-* webpack (2.2.0)
-* typescript (2.0.10)
+* webpack (2.2.1)
+* typescript (2.2.1)
 * unit testing with karma
 * end-to-end testing with protractor
 * backendless development wih mocks
