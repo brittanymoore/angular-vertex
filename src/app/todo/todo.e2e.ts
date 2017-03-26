@@ -36,7 +36,9 @@ describe("E2E: ToDo:", () => {
 
         // There should be two mock tasks initially.
         let tasks = element.all(by.css('#taskList > li'));
-        expect(tasks.count()).toEqual(2);
+        tasks.count().then((count) => {
+            expect(count).toEqual(2);
+        });
 
         // Provide a name and click Add.
         nameInput.sendKeys('test task'); 
@@ -47,7 +49,9 @@ describe("E2E: ToDo:", () => {
 
         // Verify page state.
         tasks = element.all(by.css('#taskList > li'));
-        expect(tasks.count()).toEqual(3); 
+        tasks.count().then((count) => {
+            expect(count).toEqual(3);
+        }); 
         expect(nameInput.getAttribute('value')).toBe('');
 
     });
