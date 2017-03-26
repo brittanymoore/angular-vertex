@@ -6,8 +6,8 @@ angularjs (1.0), see [angularjs-vertex](https://github.com/brittanymoore/angular
 An AOT version of this app can be found at [angular-vertex-aot](https://github.com/brittanymoore/angular-vertex-aot).
 
 The master branch contains:
-* angular (2.4.9)
-* webpack (2.2.1)
+* angular (4.0.0)
+* webpack (2.3.2)
 * typescript (2.2.1)
 * unit testing with karma
 * end-to-end testing with protractor
