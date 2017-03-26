@@ -29,7 +29,11 @@ var webpackConfig = {
                 'USE_MOCK': JSON.stringify(USE_MOCK)
             }
         })
-    ]
+    ],
+
+    devServer: {
+        contentBase: './dist'
+    }
 
 };
 
