@@ -15,7 +15,6 @@
     "dependencies": {
         "@angular/animations": "4.0.1",
         "@angular/common": "4.0.1",
-        "@angular/animations": "4.0.1",
         "@angular/compiler": "4.0.1",
         "@angular/compiler-cli": "4.0.1",
         "@angular/core": "4.0.1",
@@ -36,7 +35,7 @@
         "@types/core-js": "0.9.39",
         "awesome-typescript-loader": "3.1.2",
         "angular2-template-loader": "0.6.2",
-        "typescript": "2.2.1",
+        "typescript": "2.2.2",
         "css-loader": "0.27.3",
         "raw-loader": "0.5.1",
         "to-string-loader": "1.1.5",
