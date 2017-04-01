@@ -26,20 +26,14 @@ exports.config = {
 
     module: {
         rules: [
-            {
-                test: /\.ts$/,
-                use: [
-                    'awesome-typescript-loader?tsconfig=./tsconfig.json',
-                    'angular2-template-loader',
-                    'angular2-router-loader'
-                ]
-            },
+            { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader' ] },
             { test: /\.css$/, use: ['to-string-loader', 'css-loader'] },
             { test: /\.html$/, loader: 'raw-loader' }
         ]
     },    
 
     plugins: [
+
         new webpack.ContextReplacementPlugin(
             // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)@angular/,
@@ -48,10 +42,12 @@ exports.config = {
                 // your Angular Async Route paths relative to this root directory
             }
         ),
+
         new HtmlWebpackPlugin({
             title: 'Vertex',
             template: './config/index.template.ejs'
         })
+
     ],
 
     devServer: {
