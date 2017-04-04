@@ -4,7 +4,7 @@ import { ViewEncapsulation } from '@angular/core';
 @Component({
     selector: 'app',
     templateUrl: './app.component.html',
-    styleUrls: [ './app.component.css' ],
+    styleUrls: [ './app.component.less' ],
     encapsulation: ViewEncapsulation.None // apply styles globally
 })
 

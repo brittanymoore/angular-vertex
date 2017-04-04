@@ -27,6 +27,7 @@ exports.config = {
     module: {
         rules: [
             { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader' ] },
+            { test: /\.less$/, use: [ 'to-string-loader', 'css-loader', 'less-loader' ] },
             { test: /\.css$/, use: ['to-string-loader', 'css-loader'] },
             { test: /\.html$/, loader: 'raw-loader' }
         ]

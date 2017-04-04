@@ -9,6 +9,7 @@ The master branch contains:
 * angular (4.0.0)
 * webpack (2.3.2)
 * typescript (2.2.1)
+* less (2.7.2)
 * unit testing with karma
 * end-to-end testing with protractor
 * backendless development wih mocks

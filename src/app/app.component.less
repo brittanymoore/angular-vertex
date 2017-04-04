@@ -1,14 +1,18 @@
+@backgroundColor: #8c7aae;
+@headerColor: #2d1657;
+@footerColor: #18063a;
+
 body, html {
     padding: 0;
     margin: 0;
     height: 100%;
-    background-color: #8c7aae;
+    background-color: @backgroundColor;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
 #header {
     color: #ffffff;
-    background-color: #2d1657;
+    background-color: @headerColor;
     overflow: auto;
     padding: 0 10px;
 }
@@ -44,7 +48,7 @@ body, html {
 
 #footer {
     color: #ffffff;
-    background-color: #18063a;
+    background-color: @footerColor;
     height: 50px;
     display: table;
     width: 100%;
