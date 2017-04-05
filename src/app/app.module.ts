@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -9,15 +8,20 @@ import { ToDoModule } from './todo/todo.module';
 import { MockModule } from './mock/mock.module';
 import { AppRoutingModule, routedComponents } from './app.routing.module';
 
+let imports = [
+    BrowserModule,
+    AppRoutingModule,
+    ToDoModule,
+    HttpModule
+];
+
+// Include mocks if USE_MOCK is true.
+if (process.env.USE_MOCK) {
+    imports.push(MockModule);
+}
+
 @NgModule({
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        ToDoModule,
-        HttpModule,
-        MockModule
-    ],
+    imports: imports,
     declarations: [
         AppComponent,
         routedComponents

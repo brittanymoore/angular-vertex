@@ -1,20 +1,10 @@
-<div id="wrapper">
+<header id="header">
+    <a routerLink="/home" routerLinkActive="active">
+        <h1>{{title}}</h1>
+    </a>
+</header>
 
-    <header id="header">
-        <a routerLink="/home" routerLinkActive="active">
-            <h1>{{title}}</h1>
-        </a>
-    </header>
-
-    <main id="main">
-        <router-outlet></router-outlet>
-    </main>
-
-    <div id="footer-spacer"></div>
-
-</div>
-
-<footer id="footer">
-    <span>2017</span>
-</footer>
+<main id="main">
+    <router-outlet></router-outlet>
+</main>
 
