@@ -29,5 +29,4 @@ if (process.env.USE_MOCK) {
     providers: [ ],
     bootstrap: [ AppComponent ]
 })
-
 export class AppModule { }

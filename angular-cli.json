@@ -1,0 +1,10 @@
+{
+    "apps": [
+        {
+            "root": "src"
+        }
+    ],
+    "defaults": {
+        "styleExt": "less"
+    }
+}
