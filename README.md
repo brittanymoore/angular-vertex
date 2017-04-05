@@ -3,13 +3,12 @@
 angular-vertex is a seed repository for angular (2.0+) and webpack. For 
 angularjs (1.0), see [angularjs-vertex](https://github.com/brittanymoore/angularjs-vertex).
 
-An AOT version of this app can be found at [angular-vertex-aot](https://github.com/brittanymoore/angular-vertex-aot).
-
 The master branch contains:
 * angular (4.0.0)
 * webpack (2.3.2)
 * typescript (2.2.1)
 * less (2.7.2)
+* AOT w/ lazy-loading (@ngtools/webpack)
 * unit testing with karma
 * end-to-end testing with protractor
 * backendless development wih mocks
@@ -38,10 +37,10 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 Vertex currently has the following build modes.
 
-| Build Mode        | Command        | Output   | EnableProdMode | Uglify |
-| ----------------- | -------------- | -------  | -------------- | ------ |
-| Dev               | build          | dev      | false          | false  |
-| Prod              | build:prod     | dist     | true           | true   |
+| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT   |
+| ----------------- | -------------- | -------  | -------------- | ------ | ----- |
+| Dev               | build          | dev      | false          | false  | false |
+| Prod              | build:prod     | dist     | true           | true   | true  |
 
 Each mode has a start command similar to the one above, which can be used to launch the app in localhost:
 
@@ -52,7 +51,7 @@ npm run start:prod
 
 ### Test
 
-Support is built-in for unit testing with Karma and end-to-end testing with Protractor (both use Jasmine).
+Support is built-in for unit testing with Karma and end-to-end testing with Protractor.
 
 Unit tests should be added to a file named **.spec.ts somewhere in src directory tree. To run the tests:
 
