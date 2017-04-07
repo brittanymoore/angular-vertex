@@ -1,14 +1,18 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
 // plugins
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CommonsChunkPlugin } = require('webpack').optimize;
+
+const nodeModules = path.join(process.cwd(), './../node_modules');
 
 exports.apiUrl = ""; // can be used to prepend a static URL to web service calls
 exports.config = {
 
     entry: {
-        'main': './src/main.ts'
+        'main': './src/main.ts',
+        'polyfill': './src/polyfill.ts'
     },
 
     output: {
@@ -43,10 +47,18 @@ exports.config = {
     },
 
     plugins: [
+
+        new CommonsChunkPlugin({
+            name: "vendor",
+            minChunks: (module) => module.resource && module.resource.startsWith(nodeModules),
+            chunks: [ "main" ]
+        }),
+
         new HtmlWebpackPlugin({
             title: 'My App',
             template: './config/index.template.ejs'
         })
+        
     ],
 
     devServer: {
