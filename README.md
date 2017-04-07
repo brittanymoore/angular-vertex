@@ -13,13 +13,10 @@ This repo provides the following:
 * AOT w/ lazy-loading (@ngtools/webpack)
 * unit testing with karma
 * end-to-end testing with protractor
-* backendless development wih mocks
 * some angular-cli support**
 
-**This project was not built with angular-cli, but you may notice that the cli is listed as a dependency
-in package.json, and there is an angular-cli.json file in the root. I prefer a different application structure 
-than the cli provides, but I'm a fan of the various ng commands for creating components, services, etc.
-This project includes the minimum configuration you need to use those commands. :)
+**This project was not built with angular-cli, but has the minimal support required to use some of the ng commands, such as
+the component generator.
 
 ## Getting Started
 
@@ -77,9 +74,3 @@ npm run webdriver-manager -- update
 npm run start
 npm run test:e2e
 ```
-
-### Mocking
-
-The mock folder contains a MockModule, which can be loaded to catch HTTP requests in a 
-local backend. This is useful for development. To get rid of it, simply delete the mock
-folder and remove the if statement that loads it in app.module.ts.
