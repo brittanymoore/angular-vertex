@@ -20,25 +20,33 @@ exports.config = {
 
     resolve: {
         extensions: [ '.ts', '.js' ],
-        // modules is required when webpack config is not in root directory.
         modules: [ path.resolve(__dirname, './../node_modules') ]
     },
 
     module: {
         rules: [
-            { test: /\.less$/, use: [ 'to-string-loader', 'css-loader', 'less-loader' ] },
-            { test: /\.css$/, use: ['to-string-loader', 'css-loader'] },
+            { 
+                test: /\.less$/, use: [ 
+                    'exports-loader?module.exports.toString()',
+                    'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                    'less-loader?sourceMap=false'
+                ]
+            },            
+            { 
+                test: /\.css$/, use: [
+                    'exports-loader?module.exports.toString()',
+                    'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                ] 
+            },
             { test: /\.html$/, loader: 'raw-loader' }
         ]
     },
 
     plugins: [
-
         new HtmlWebpackPlugin({
             title: 'Vertex',
             template: './config/index.template.ejs'
         })
-
     ],
 
     devServer: {

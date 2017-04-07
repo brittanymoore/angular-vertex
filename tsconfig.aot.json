@@ -7,13 +7,15 @@
         "target": "es5",
         "lib": [ "es2015", "dom" ],
         "typeRoots": ["node_modules/@types"],
-        "types": ["node", "jasmine"], 
+        "types": ["node"], 
         "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "src/**/*.spec.ts",
+        "src/**/*.e2e.ts"
     ],
     "angularCompilerOptions": {
         "genDir": "./dist/aot"

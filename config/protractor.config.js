@@ -11,6 +11,6 @@ exports.config = {
         defaultTimeoutInterval: 30000
     },
     baseUrl: 'http://localhost:3000',
-    seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
+    //seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
     useAllAngular2AppRoots: true
 };

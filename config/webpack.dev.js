@@ -14,9 +14,10 @@ var webpackConfig = {
 
     output: {
         path: path.resolve(__dirname, './../dev'),
+        pathinfo: true // helps with devtool: eval
     },
 
-    devtool: 'inline-source-map', 
+    devtool: 'eval', 
 
     module: {
         rules: [
