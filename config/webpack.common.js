@@ -44,7 +44,7 @@ exports.config = {
 
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Vertex',
+            title: 'My App',
             template: './config/index.template.ejs'
         })
     ],

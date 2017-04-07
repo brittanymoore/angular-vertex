@@ -7,7 +7,6 @@ import { ViewEncapsulation } from '@angular/core';
     styleUrls: [ './app.component.less' ],
     encapsulation: ViewEncapsulation.None // apply styles globally
 })
-
 export class AppComponent {
-    title = "Vertex";
+    title = "My App";
 }

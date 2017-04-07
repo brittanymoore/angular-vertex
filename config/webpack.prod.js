@@ -32,8 +32,7 @@ var webpackConfig = {
 
         new ngtools.AotPlugin({
             tsConfigPath: './tsconfig.aot.json',
-            mainPath: "./src/main.ts",
-            exclude: "**/*.spec.ts"
+            mainPath: "./src/main.ts"
         }),
 
         new webpack.DefinePlugin({

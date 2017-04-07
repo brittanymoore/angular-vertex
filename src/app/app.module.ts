@@ -4,14 +4,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
-import { ToDoModule } from './todo/todo.module';
 import { MockModule } from './mock/mock.module';
 import { AppRoutingModule, routedComponents } from './app.routing.module';
 
 let imports = [
     BrowserModule,
     AppRoutingModule,
-    ToDoModule,
     HttpModule
 ];
 

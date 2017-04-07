@@ -1,9 +1,11 @@
 # Vertex
 
-angular-vertex is a seed repository using angular and webpack. For 
-angularjs (1.0), see [angularjs-vertex](https://github.com/brittanymoore/angularjs-vertex).
+angular-vertex is a seed repository using angular and webpack.
 
-This repo includes the following:
+Check out my [todo demo](https://github.com/brittanymoore/angular-demo-vertex) for a more robust example
+including some functionality, tests, and mocking.
+
+This repo provides the following:
 * angular
 * webpack
 * typescript
@@ -12,6 +14,12 @@ This repo includes the following:
 * unit testing with karma
 * end-to-end testing with protractor
 * backendless development wih mocks
+* some angular-cli support**
+
+**This project was not built with angular-cli, but you may notice that the cli is listed as a dependency
+in package.json, and there is an angular-cli.json file in the root. I prefer a different application structure 
+than the cli provides, but I'm a fan of the various ng commands for creating components, services, etc.
+This project includes the minimum configuration you need to use those commands. :)
 
 ## Getting Started
 
@@ -37,10 +45,10 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 Vertex currently has the following build modes.
 
-| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT   |
-| ----------------- | -------------- | -------  | -------------- | ------ | ----- |
-| Dev               | build          | dev      | false          | false  | false |
-| Prod              | build:prod     | dist     | true           | true   | true  |
+| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT   | Mocks |
+| ----------------- | -------------- | -------  | -------------- | ------ | ----- | ----- |
+| Dev               | build          | dev      | false          | false  | false | true  |
+| Prod              | build:prod     | dist     | true           | true   | true  | false |
 
 Each mode has a start command similar to the one above, which can be used to launch the app in localhost:
 
@@ -72,11 +80,6 @@ npm run test:e2e
 
 ### Mocking
 
-Vertex comes with a 'mock' module that provides backendless development for 
-the rest of the application. It currently contains mocks for the To-do module 
-that can be used as a starting point. These mocks are also used in the e2e 
-tests for the To-do module.
-
-By default, the services mock SharePoint REST API. You can substitute any 
-other backend by updating the web service calls and helpers in 
-todo/todo.service.ts and mock/mock.service.ts.
+The mock folder contains a MockModule, which can be loaded to catch HTTP requests in a 
+local backend. This is useful for development. To get rid of it, simply delete the mock
+folder and remove the if statement that loads it in app.module.ts.
