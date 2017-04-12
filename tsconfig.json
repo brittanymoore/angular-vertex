@@ -13,8 +13,6 @@
         "experimentalDecorators": true
     },
     "exclude": [
-        "node_modules",
-        "src/**/*.spec.ts",
-        "src/**/*.e2e.ts"
+        "node_modules"
     ]
 }

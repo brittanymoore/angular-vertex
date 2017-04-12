@@ -1,20 +1,20 @@
 const webpack = require('webpack');
 const path = require('path');
-var webpackMerge = require('webpack-merge');
+const webpackMerge = require('webpack-merge');
 
 // plugins
 const ngtools = require('@ngtools/webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // common config
-var common = require('./webpack.common');
+const common = require('./webpack.common');
 
 // constants
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 const API_URL = process.env.API_URL = common.apiUrl;
 const USE_MOCK = process.env.USE_MOCK = false;
 
-var webpackConfig = {
+const webpackConfig = {
 
     output: {
         publicPath: common.PUBLIC_PATH,

@@ -1,16 +1,16 @@
-var webpack = require('webpack');
-var path = require('path');
-var webpackMerge = require('webpack-merge');
+const webpack = require('webpack');
+const path = require('path');
+const webpackMerge = require('webpack-merge');
 
 // common config
-var common = require('./webpack.common');
+const common = require('./webpack.common');
 
 // constants
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 const API_URL = process.env.API_URL = common.apiUrl;
 const USE_MOCK = process.env.USE_MOCK = true;
 
-var webpackConfig = {
+const webpackConfig = {
 
     output: {
         publicPath: '',

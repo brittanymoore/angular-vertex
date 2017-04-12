@@ -15,7 +15,8 @@ exports.config = {
 
     entry: {
         'main': './src/main.ts',
-        'polyfill': './src/polyfill.ts'
+        'polyfill': './src/polyfill.ts',
+        'vendor': './src/vendor.ts'
     },
 
     output: {
@@ -63,9 +64,9 @@ exports.config = {
     plugins: [
 
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',
+            name: 'common',
             minChunks: (module) => module.resource && module.resource.startsWith(nodeModules),
-            chunks: [ 'main', 'polyfill' ]
+            chunks: [ 'main', 'polyfill', 'vendor' ]
         }),
 
         new HtmlWebpackPlugin({

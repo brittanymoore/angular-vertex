@@ -10,6 +10,10 @@ module.exports = function (config) {
         },
         webpack: require('./webpack.dev.js'),
         reporters: ['spec'],
+        specReporter: {
+            failFast: true,
+            suppressErrorSummary: true
+        },
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
