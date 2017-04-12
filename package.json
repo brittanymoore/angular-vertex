@@ -12,8 +12,6 @@
         "webdriver-manager": "webdriver-manager update --standalone false --gecko false",
         "test:e2e": "protractor ./config/protractor.conf.js"
     },
-    "author": "Brittany Moore <brittanymoore>",
-    "license": "MIT",
     "dependencies": {
         "@angular/animations": "4.0.1",
         "@angular/common": "4.0.1",
@@ -63,8 +61,10 @@
         "ts-node": "3.0.2",
         "rimraf": "2.6.1"
     },
+    "author": "Brittany Moore <brittanymoore>",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/brittanymoore/angular-vertex.git"
-    }
+    }    
 }
