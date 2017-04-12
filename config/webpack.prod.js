@@ -1,4 +1,4 @@
-const webpack = require("webpack");
+const webpack = require('webpack');
 const path = require('path');
 var webpackMerge = require('webpack-merge');
 
@@ -32,7 +32,7 @@ var webpackConfig = {
 
         new ngtools.AotPlugin({
             tsConfigPath: './tsconfig.aot.json',
-            mainPath: "./src/main.ts"
+            mainPath: './src/main.ts'
         }),
 
         new webpack.DefinePlugin({
