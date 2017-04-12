@@ -3,11 +3,14 @@ const path = require('path');
 
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CommonsChunkPlugin } = require('webpack').optimize;
 
+// constants
+const APP_NAME = 'My App';
 const nodeModules = path.join(process.cwd(), './../node_modules');
 
-exports.apiUrl = ""; // can be used to prepend a static URL to web service calls
+exports.API_URL = '';
+exports.PUBLIC_PATH = '';
+
 exports.config = {
 
     entry: {
@@ -16,7 +19,6 @@ exports.config = {
     },
 
     output: {
-        publicPath: '',
         filename: '[name].bundle.js',
         sourceMapFilename: '[name].map',
         chunkFilename: '[id].chunk.js'
@@ -33,6 +35,7 @@ exports.config = {
                 test: /\.less$/, use: [ 
                     'exports-loader?module.exports.toString()',
                     'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                    'postcss-loader?config=./config/postcss.config.js',
                     'less-loader?sourceMap=false'
                 ]
             },            
@@ -40,23 +43,35 @@ exports.config = {
                 test: /\.css$/, use: [
                     'exports-loader?module.exports.toString()',
                     'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                    'postcss-loader?config=./config/postcss.config.js',                    
                 ] 
             },
-            { test: /\.html$/, loader: 'raw-loader' }
+            { 
+                test: /\.html$/, loader: 'raw-loader' 
+            },
+            {
+                test: /\.(eot|svg)$/,
+                use: 'file-loader?name=assets/[name].[hash:20].[ext]'
+            },
+            {
+                test: /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
+                use: 'url-loader?name=assets/[name].[hash:20].[ext]&limit=10000'
+            }
         ]
     },
 
     plugins: [
 
-        new CommonsChunkPlugin({
-            name: "vendor",
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
             minChunks: (module) => module.resource && module.resource.startsWith(nodeModules),
-            chunks: [ "main" ]
+            chunks: [ 'main', 'polyfill' ]
         }),
 
         new HtmlWebpackPlugin({
-            title: 'My App',
-            template: './config/index.template.ejs'
+            title: APP_NAME,
+            template: './config/index.template.ejs',
+            cache: true
         })
         
     ],

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "rootDir": "",
+        "rootDir": ".",
         "outDir": "dist", 
         "module": "commonjs",
         "moduleResolution": "node",
@@ -16,7 +16,5 @@
         "node_modules",
         "src/**/*.spec.ts",
         "src/**/*.e2e.ts"
-    ],
-    "compileOnSave": false,
-    "buildOnSave": false
+    ]
 }

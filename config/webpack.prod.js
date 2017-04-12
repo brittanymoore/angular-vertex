@@ -17,6 +17,7 @@ const USE_MOCK = process.env.USE_MOCK = false;
 var webpackConfig = {
 
     output: {
+        publicPath: common.PUBLIC_PATH,
         path: path.resolve(__dirname, './../dist')
     },
 
