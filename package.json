@@ -4,10 +4,10 @@
     "description": "Seed Project for Angular",
     "scripts": {
         "clean": "rimraf ./dist",
-        "build": "webpack --config ./config/webpack.dev.js --progress",
-        "build:prod": "npm run clean && webpack --config ./config/webpack.prod.js --progress",
-        "start": "webpack-dev-server --config ./config/webpack.dev.js",
-        "start:prod": "npm run clean && webpack-dev-server --config ./config/webpack.prod.js",
+        "build": "webpack --config ./config/webpack.dev.js --progress ",
+        "build:prod": "npm run clean && webpack --config ./config/webpack.prod.js --progress ",
+        "start": "webpack-dev-server --config ./config/webpack.dev.js --inline --progress",
+        "start:prod": "npm run clean && webpack-dev-server --config ./config/webpack.prod.js --inline --progress",
         "test": "karma start ./config/karma.conf.js ",
         "webdriver-manager": "webdriver-manager update --standalone false --gecko false",
         "test:e2e": "protractor ./config/protractor.conf.js"
