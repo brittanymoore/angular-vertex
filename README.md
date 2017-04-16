@@ -2,7 +2,7 @@
 
 angular-vertex is a seed repository using angular and webpack.
 
-Check out my [todo demo](https://github.com/brittanymoore/angular-demo-vertex) for a more robust example
+Check out my [todo demo](https://github.com/brittanymoore/angular-demo-todo) for a more robust example
 including some functionality, tests, and mocking.
 
 This repo provides the following:
