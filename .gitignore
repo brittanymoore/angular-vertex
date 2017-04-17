@@ -10,5 +10,3 @@ dist
 /src/**/*.map
 /src/**/*.ngfactory.ts
 /src/**/*.css.shim.ts
-
-
