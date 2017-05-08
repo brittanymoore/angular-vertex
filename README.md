@@ -15,7 +15,12 @@ This repo provides the following:
 * end-to-end testing with protractor
 * some angular-cli support**
 
-**This project was not built with angular-cli, but has the minimal support required to use ng generate (because its awesome).
+**This project was not built with angular-cli, but has the minimal support required to use ng generate (because it's awesome).
+
+KNOWN ISSUES:
+With the latest version of angular, MockBackend throws an error when used with AOT compilation. Since mocks aren't used in prod,
+this isn't a gamebreaker, but it means you can't validate your app with the mocks and AOT right now. I've seen an update in 
+the angular repo that should fix this, but I'm not sure which release it'll be in.
 
 ## Getting Started
 
