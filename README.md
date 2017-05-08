@@ -9,14 +9,13 @@ This repo provides the following:
 * angular
 * webpack
 * typescript
-* less
+* sass
 * AOT w/ lazy-loading (@ngtools/webpack)
 * unit testing with karma
 * end-to-end testing with protractor
 * some angular-cli support**
 
-**This project was not built with angular-cli, but has the minimal support required to use some of the ng commands, such as
-the component generator.
+**This project was not built with angular-cli, but has the minimal support required to use ng generate (because its awesome).
 
 ## Getting Started
 
@@ -61,7 +60,7 @@ Support is built-in for unit testing with Karma and end-to-end testing with Prot
 Unit tests should be added to a file named **.spec.ts somewhere in src directory tree. To run the tests:
 
 ```
-npm run test:unit
+npm run test
 ```
 
 E2E tests should be added to a file named **.e2e.ts somewhere in the src directory tree. To run the tests:
