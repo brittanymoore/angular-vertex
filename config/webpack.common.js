@@ -37,7 +37,7 @@ exports.config = {
                     'exports-loader?module.exports.toString()',
                     'css-loader?sourceMap=false&importLoaders=1&minimize=true',
                     'sass-loader',
-                    'postcss-loader?config=./config/postcss.config.js'
+                    //{ loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
                 ]
             },     
             { 
