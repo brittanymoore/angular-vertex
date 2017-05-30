@@ -10,14 +10,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common');
 
 // constants
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const API_URL = process.env.API_URL = common.apiUrl;
-const USE_MOCK = process.env.USE_MOCK = false;
+const environment = 'production';
+const apiUrl = common.apiUrl;
 
 const webpackConfig = {
 
     output: {
-        publicPath: common.PUBLIC_PATH,
+        publicPath: common.publicPath,
         path: path.resolve(__dirname, './../dist')
     },
 
@@ -38,9 +37,8 @@ const webpackConfig = {
 
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(ENV),
-                'API_URL': JSON.stringify(API_URL),
-                'USE_MOCK': JSON.stringify(USE_MOCK)
+                'ENV': JSON.stringify(environment),
+                'API_URL': JSON.stringify(apiUrl)
             }
         }),
 

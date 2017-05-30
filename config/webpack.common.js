@@ -5,11 +5,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // constants
-const APP_NAME = 'My App';
+const appName = 'My App';
 const nodeModules = path.join(process.cwd(), './../node_modules');
 
-exports.API_URL = '';
-exports.PUBLIC_PATH = '';
+exports.apiUrl = '';
+exports.publicPath = '';
 
 exports.config = {
 
@@ -70,7 +70,7 @@ exports.config = {
         }),
 
         new HtmlWebpackPlugin({
-            title: APP_NAME,
+            title: appName,
             template: './config/index.template.ejs',
             cache: true
         })

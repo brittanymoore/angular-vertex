@@ -6,9 +6,8 @@ const webpackMerge = require('webpack-merge');
 const common = require('./webpack.common');
 
 // constants
-const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
-const API_URL = process.env.API_URL = common.apiUrl;
-const USE_MOCK = process.env.USE_MOCK = true;
+const environment = 'development';
+const apiUrl = common.apiUrl;
 
 const webpackConfig = {
 
@@ -24,9 +23,9 @@ const webpackConfig = {
         rules: [
             { 
                 test: /\.ts$/, use: [ 
-                    'awesome-typescript-loader', 
-                    'angular2-template-loader', 
-                    'angular-router-loader' 
+                    'awesome-typescript-loader',
+                    'angular2-template-loader',
+                    'angular-router-loader'
                 ] 
             }
         ]
@@ -36,19 +35,15 @@ const webpackConfig = {
 
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(ENV),
-                'API_URL': JSON.stringify(API_URL),
-                'USE_MOCK': JSON.stringify(USE_MOCK)
+                'ENV': JSON.stringify(environment),
+                'API_URL': JSON.stringify(apiUrl)
             }
         }),
 
         new webpack.ContextReplacementPlugin(
-            // The (\\|\/) piece accounts for path separators in *nix and Windows
             /angular(\\|\/)core(\\|\/)@angular/,
             path.resolve(__dirname, './../src'),
-            {
-                // your Angular Async Route paths relative to this root directory
-            }
+            {}
         )
 
     ],
