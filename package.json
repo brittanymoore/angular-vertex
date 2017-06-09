@@ -17,7 +17,7 @@
         "test": "karma start ./config/karma.conf.js ",
         "webdriver-manager": "webdriver-manager update --standalone false --gecko false",
         "test:e2e": "protractor ./config/protractor.conf.js",
-        "lint": "tslint 'src/**/*.ts' -c ./config/tslint.json -e 'src/**/*.spec.ts'"
+        "lint": "tslint 'src/**/*.ts' -c ./config/tslint.json"
     },
     "dependencies": {
         "@angular/animations": "4.1.2",
