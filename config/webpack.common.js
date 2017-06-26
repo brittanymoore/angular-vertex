@@ -20,7 +20,7 @@ exports.config = {
     },
 
     output: {
-        filename: '[name].bundle.js',
+        filename: '[name].[chunkhash].js',
         sourceMapFilename: '[name].map',
         chunkFilename: '[id].chunk.js'
     },
@@ -63,16 +63,10 @@ exports.config = {
 
     plugins: [
 
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'common',
-            minChunks: (module) => module.resource && module.resource.startsWith(nodeModules),
-            chunks: [ 'main', 'polyfill', 'vendor' ]
-        }),
-
         new HtmlWebpackPlugin({
             title: appName,
             template: './config/index.template.ejs',
-            cache: true
+            chunksSortMode: 'dependency'
         })
         
     ],
