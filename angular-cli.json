@@ -5,6 +5,6 @@
         }
     ],
     "defaults": {
-        "styleExt": "less"
+        "styleExt": "scss"
     }
 }
