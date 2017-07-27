@@ -36,8 +36,8 @@
         "zone.js": "0.8.14"
     },
     "devDependencies": {
-        "@angular/cli": "1.2.5",
-        "@ngtools/webpack": "1.5.4",
+        "@angular/cli": "1.2.6",
+        "@ngtools/webpack": "1.5.5",
         "@types/jasmine": "2.5.53",
         "@types/node": "8.0.17",
         "angular-router-loader": "0.6.0",
