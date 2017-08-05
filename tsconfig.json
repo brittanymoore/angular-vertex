@@ -5,7 +5,7 @@
         "target": "es5",
         "lib": ["es6", "dom"],  
         "typeRoots": ["node_modules/@types"],
-        "types": ["node", "jasmine"],  
+        "types": ["node"],  
         "sourceMap": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true
