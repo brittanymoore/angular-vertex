@@ -6,4 +6,4 @@ if (process.env.ENV !== 'development') {
     enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
+platformBrowserDynamic().bootstrapModule(AppModule).catch((e) => console.error(e));

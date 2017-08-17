@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const path = require('path');
 const webpackMerge = require('webpack-merge');
 const WebpackChunkHash = require('webpack-chunk-hash');
-const ChunkManifestPlugin = require('chunk-manifest-webpack-plugin');
 
 // plugins
 const ngtools = require('@ngtools/webpack');
@@ -14,19 +13,36 @@ const common = require('./webpack.common');
 // constants
 const environment = 'production';
 const apiUrl = common.apiUrl;
+const outputPath = path.resolve(__dirname, './../dist');
 
 module.exports = webpackMerge(common.config, {
 
     output: {
+        filename: '[name].[chunkhash].js',        
         publicPath: common.publicPath,
-        path: path.resolve(__dirname, './../dist')
+        path: outputPath
     },
 
     devtool: 'source-map',
 
     module: {
         rules: [
-            { test: /\.ts$/, loader: '@ngtools/webpack' }        
+            { test: /\.ts$/, loader: '@ngtools/webpack' },
+            {
+                test: /\.scss$/, use: [
+                    'exports-loader?module.exports.toString()',
+                    'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                    'sass-loader',
+                    { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
+                ]
+            },     
+            { 
+                test: /\.css$/, use: [
+                    'exports-loader?module.exports.toString()',
+                    'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                    { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
+                ] 
+            }     
         ]
     },
 

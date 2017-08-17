@@ -21,9 +21,9 @@ TestBed.initTestEnvironment(
 );
 
 // Make sure Karma is running correctly.
-describe("Sanity Check:", () => {
+describe('Sanity Check:', () => {
 
-    it("Karma is working.", () => {
+    it('Karma is working.', () => {
         expect(0).toBe(0);
     });
 

@@ -8,12 +8,15 @@ const common = require('./webpack.common');
 // constants
 const environment = 'development';
 const apiUrl = common.apiUrl;
+const outputPath = path.resolve(__dirname, './../dev');
+const sourcePath = path.resolve(__dirname, './../src');
 
 const webpackConfig = {
 
     output: {
+        filename: '[name].bundle.js',        
         publicPath: '',
-        path: path.resolve(__dirname, './../dev'),
+        path: outputPath,
         pathinfo: true // helps with devtool: eval
     },
 
@@ -21,13 +24,9 @@ const webpackConfig = {
 
     module: {
         rules: [
-            { 
-                test: /\.ts$/, use: [ 
-                    'awesome-typescript-loader',
-                    'angular2-template-loader',
-                    'angular-router-loader'
-                ] 
-            }
+            { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular-router-loader' ] },
+            { test: /\.scss$/, use: [ 'raw-loader', 'sass-loader' ] },     
+            { test: /\.css$/, use: [ 'raw-loader' ] },
         ]
     },
 
@@ -42,14 +41,14 @@ const webpackConfig = {
 
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
-            path.resolve(__dirname, './../src'),
+            sourcePath,
             {}
         )
 
     ],
 
     devServer: {
-        contentBase: './dev'
+        contentBase: outputPath
     }
 
 };
