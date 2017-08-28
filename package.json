@@ -1,12 +1,12 @@
 {
-    "name": "angular-vertex",
+    "name": "angular-seed",
     "version": "1.0.0",
     "description": "Seed Project for Angular",
     "license": "MIT",
     "author": "Brittany Moore <brittanymoore>",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/brittanymoore/angular-vertex.git"
+        "url": "git+https://github.com/brittanymoore/angular-seed.git"
     },
     "scripts": {
         "build": "webpack --env=dev --progress --profile --colors",
