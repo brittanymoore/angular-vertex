@@ -1,4 +1,4 @@
-# Vertex
+# Angular Seed
 
 angular-seed is a seed repository using angular and webpack.
 
@@ -40,7 +40,7 @@ Once the server is running, open a browser and navigate to localhost:3000.
 
 ### Build
 
-Vertex currently has the following build modes.
+This project currently has the following build modes.
 
 | Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT   | Mocks |
 | ----------------- | -------------- | -------  | -------------- | ------ | ----- | ----- |
