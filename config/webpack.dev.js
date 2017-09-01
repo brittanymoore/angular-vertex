@@ -2,14 +2,18 @@ const webpack = require('webpack');
 const path = require('path');
 
 // constants
-const OUTPUT_PATH = './dev';
-const SOURCE_PATH = './src';
+const APP_NAME = 'My App';
+const OUTPUT_PATH = path.resolve(__dirname, './../dev');
+const SOURCE_PATH = path.resolve(__dirname, './../src');
+
+// plugins
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 
     // entry point(s) for the bundle
     entry: {
-        'main':'./src/main.ts'
+        'main': './src/main.ts'
     },
 
     // configuration options for the files webpack generates
@@ -19,7 +23,7 @@ module.exports = {
     output: {
         filename: '[name].bundle.js',
         sourceMapFilename: '[name].map',
-        path: path.resolve(__dirname, OUTPUT_PATH),
+        path: OUTPUT_PATH,
         pathinfo: true // makes devtool: eval more effective
     },
 
@@ -29,7 +33,7 @@ module.exports = {
 
     // resolve.extensions tells webpack which extensions should
     // be used to resolve modules
-    // this is what allows you to use import statements without specifying the extension.`
+    // this is what allows you to use import statements without specifying the extension.
     resolve: {
         extensions: [ '.ts', '.js' ]
     },
@@ -37,7 +41,9 @@ module.exports = {
     // module.rules specifies which webpack loaders to use for which file types
     module: {
         rules: [
-            { test: /\.ts$/, use: [ 'awesome-typescript-loader' ]}
+            { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader' ]},
+            { test: /\.html$/, loader: 'raw-loader' },
+            { test: /\.css$/, use: [ 'raw-loader', 'css-loader' ]}
         ]
     },
 
@@ -46,9 +52,14 @@ module.exports = {
         // this plugin is necessary for angular's routing to work correctly
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
-            path.resolve(__dirname, SOURCE_PATH),
+            SOURCE_PATH,
             {}
-        )
+        ),
+        new HtmlWebpackPlugin({
+            title: APP_NAME,
+            template: './config/index.template.ejs',
+            chunksSortMode: 'dependency'
+        })
     ],
 
     // options for running with webpack-dev-server
