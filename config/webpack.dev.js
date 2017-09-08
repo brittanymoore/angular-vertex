@@ -43,9 +43,9 @@ module.exports = {
     // module.rules specifies which webpack loaders to use for which file types
     module: {
         rules: [
-            { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader' ]},
+            { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader' ] },
             { test: /\.html$/, loader: 'raw-loader' },
-            { test: /\.css$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader' ]}
+            { test: /\.css$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader' ] }
         ]
     },
 
