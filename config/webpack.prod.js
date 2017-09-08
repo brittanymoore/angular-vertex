@@ -1,33 +1,34 @@
 const webpack = require('webpack');
 const path = require('path');
 const webpackMerge = require('webpack-merge');
-const WebpackChunkHash = require('webpack-chunk-hash');
 
 // plugins
 const ngtools = require('@ngtools/webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebpackChunkHash = require('webpack-chunk-hash');
 
 // common config
 const common = require('./webpack.common');
 
 // constants
-const environment = 'production';
-const apiUrl = common.apiUrl;
-const outputPath = path.resolve(__dirname, './../dist');
+const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const API_URL = process.env.API_URL = common.apiUrl;
+
+const OUTPUT_PATH = path.resolve(__dirname, './../dist');
+const SOURCE_PATH = path.resolve(__dirname, './../src');
 
 module.exports = webpackMerge(common.config, {
 
     output: {
         filename: '[name].[chunkhash].js',        
         publicPath: common.publicPath,
-        path: outputPath
+        path: OUTPUT_PATH
     },
 
     devtool: 'source-map',
 
     module: {
         rules: [
-            { test: /\.ts$/, loader: '@ngtools/webpack' },
+            { test: /\.ts$/, loader: '@ngtools/webpack', exclude: /node_modules/ },
             {
                 test: /\.scss$/, use: [
                     'exports-loader?module.exports.toString()',
@@ -50,7 +51,7 @@ module.exports = webpackMerge(common.config, {
 
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            chunks: ['main', 'vendor'],
+            chunks: ['main'],
             minChunks: function (module) {
                 return module.context && module.context.indexOf('node_modules') !== -1;
             }            
@@ -69,8 +70,8 @@ module.exports = webpackMerge(common.config, {
 
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(environment),
-                'API_URL': JSON.stringify(apiUrl)
+                'ENV': JSON.stringify(ENV),
+                'API_URL': JSON.stringify(API_URL)
             }
         }),
 
@@ -88,6 +89,10 @@ module.exports = webpackMerge(common.config, {
             comments: false
         })
 
-    ]
+    ],
+
+    devServer: {
+        contentBase: OUTPUT_PATH
+    }
 
 });

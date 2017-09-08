@@ -6,17 +6,18 @@ const webpackMerge = require('webpack-merge');
 const common = require('./webpack.common');
 
 // constants
-const environment = 'development';
-const apiUrl = common.apiUrl;
-const outputPath = path.resolve(__dirname, './../dev');
-const sourcePath = path.resolve(__dirname, './../src');
+const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
+const API_URL = process.env.API_URL = common.apiUrl;
 
-const webpackConfig = {
+const OUTPUT_PATH = path.resolve(__dirname, './../dev');
+const SOURCE_PATH = path.resolve(__dirname, './../src');
+
+module.exports = webpackMerge(common.config, {
 
     output: {
         filename: '[name].bundle.js',        
         publicPath: '',
-        path: outputPath,
+        path: OUTPUT_PATH,
         pathinfo: true // helps with devtool: eval
     },
 
@@ -24,9 +25,13 @@ const webpackConfig = {
 
     module: {
         rules: [
-            { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular-router-loader' ] },
-            { test: /\.scss$/, use: [ 'raw-loader', 'sass-loader' ] },     
-            { test: /\.css$/, use: [ 'raw-loader' ] },
+            { 
+                test: /\.ts$/, 
+                use: [ 'awesome-typescript-loader',  'angular2-template-loader',  'angular-router-loader' ],
+                exclude: /node_modules/
+            },
+            { test: /\.scss$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader', 'sass-loader' ] },
+            { test: /\.css$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader' ] }
         ]
     },
 
@@ -34,23 +39,21 @@ const webpackConfig = {
 
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(environment),
-                'API_URL': JSON.stringify(apiUrl)
+                'ENV': JSON.stringify(ENV),
+                'API_URL': JSON.stringify(API_URL)
             }
         }),
 
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)@angular/,
-            sourcePath,
+            SOURCE_PATH,
             {}
         )
 
     ],
 
     devServer: {
-        contentBase: outputPath
+        contentBase: OUTPUT_PATH
     }
 
-};
-
-module.exports = webpackMerge(common.config, webpackConfig);
+});
