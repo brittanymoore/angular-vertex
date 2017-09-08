@@ -13,7 +13,8 @@ module.exports = {
 
     // entry point(s) for the bundle
     entry: {
-        'main': './src/main.ts'
+        'main': './src/main.ts',
+        'polyfill': './src/polyfill.ts'
     },
 
     // configuration options for the files webpack generates
@@ -31,11 +32,12 @@ module.exports = {
     // in a development build, we want the fastest tool, which is eval
     devtool: 'eval',
 
-    // resolve.extensions tells webpack which extensions should
-    // be used to resolve modules
-    // this is what allows you to use import statements without specifying the extension.
+    // resolve.extensions tells webpack which extensions should be used to resolve modules
+    // extensions allows you to use import statements without specifying certain extensions
+    // modules specifies the location of node_modules relative to the config file
     resolve: {
-        extensions: [ '.ts', '.js' ]
+        extensions: [ '.ts', '.js' ],
+        modules: [ path.resolve(__dirname, './../node_modules') ]
     },
 
     // module.rules specifies which webpack loaders to use for which file types
@@ -43,7 +45,7 @@ module.exports = {
         rules: [
             { test: /\.ts$/, use: [ 'awesome-typescript-loader', 'angular2-template-loader' ]},
             { test: /\.html$/, loader: 'raw-loader' },
-            { test: /\.css$/, use: [ 'raw-loader', 'css-loader' ]}
+            { test: /\.css$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader' ]}
         ]
     },
 
