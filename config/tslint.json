@@ -10,42 +10,42 @@
         "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
 
         // Functionality
-        "curly": true, // GM Rule
+        "curly": true,
         "import-blacklist": [true, "rxjs"],
-        "no-conditional-assignment": true, // GM Rule
-        "no-bitwise": true, // GM Rule
+        "no-conditional-assignment": true,
+        "no-bitwise": true,
         "no-console": [true, "log"],
         "no-duplicate-super": true,
         "no-duplicate-variable": true,
         "no-empty": true,
-        "no-eval": true, // GM Rule
-        "no-for-in-array": true, // GM Rule
+        "no-eval": true,
+        "no-for-in-array": true,
         "no-invalid-this": true,
         "no-shadowed-variable": true,
-        "no-switch-case-fall-through": true, // GM Rule   
+        "no-switch-case-fall-through": true,  
         "no-this-assignment": true,
         "no-unused-expression": true,
-        "no-unused-variable": [ true, "check-parameters", {"ignore-pattern": "^_"} ], // GM Rule
+        "no-unused-variable": [ true, "check-parameters", {"ignore-pattern": "^_"} ]
         "no-use-before-declare": true,
         "no-var-keyword": true,
         "prefer-conditional-expression": true,
         "prefer-object-spread": true,
         "radix": true,
         "restrict-plus-operands": true,
-        "switch-default": true, // GM Rule
-        "triple-equals": [ true, "allow-null-check" ], // GM Rule
+        "switch-default": true, 
+        "triple-equals": [ true, "allow-null-check" ],
         
         // Maintainability
         "deprecation": true,
         "eofline": true,
-        "indent": [ true, "spaces", 4 ], // GM Rule (modified)
+        "indent": [ true, "spaces", 4 ],
         "max-classes-per-file": [true, 1],
         "max-file-line-count": [true, 500],
-        "max-line-length": [ true, 150 ], // GM Rule (modified)
+        "max-line-length": [ true, 150 ],
         "no-default-export": true,
         "no-duplicate-imports": true,
         "prefer-const": true,
-        "trailing-comma": [ true, { "multiline": "never", "singleline": "never" }], // GM Rule
+        "trailing-comma": [ true, { "multiline": "never", "singleline": "never" }],
 
         // Style
         "align": [true, "parameters", "arguments", "statements"],
@@ -66,20 +66,20 @@
         "no-unnecessary-callback-wrapper": true,
         "no-unnecessary-initializer": true,
         "no-unnecessary-qualifier": true,
-        "number-literal-format": true, // GM Rule
+        "number-literal-format": true,
         "object-literal-key-quotes": [true, "as-needed"],
-        "one-line": [ true, "check-open-brace", "check-catch", "check-else", "check-whitespace" ], // GM Rule
+        "one-line": [ true, "check-open-brace", "check-catch", "check-else", "check-whitespace" ],
         "one-variable-per-declaration": [true, "ignore-for-loop"],
         "prefer-method-signature": true,
         "prefer-switch": true,
         "prefer-template": true,
         "quotemark": [true, "single"],
         "return-undefined": true,
-        "semicolon": [true, "always"], // GM Rule
+        "semicolon": [true, "always"],
         "space-before-function-paren": [true, "never"],
-        "switch-final-break": true, // GM Rule
-        "variable-name": [ true, "check-format", "allow-leading-underscore", "ban-keywords" ], // GM Rule
-        "whitespace": [ true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type" ], // GM Rule
+        "switch-final-break": true,
+        "variable-name": [ true, "check-format", "allow-leading-underscore", "ban-keywords" ],
+        "whitespace": [ true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type" ],
 
         // codelyzer (Angular) rules
         "directive-selector": [true, "attribute", "", "camelCase"],
