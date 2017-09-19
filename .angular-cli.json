@@ -1,7 +1,8 @@
 {
     "apps": [
         {
-            "root": "src"
+            "root": "src",
+            "prefix": "app"
         }
     ],
     "defaults": {
