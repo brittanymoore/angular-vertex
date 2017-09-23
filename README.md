@@ -27,7 +27,7 @@ npm install
 npm start
 ```
 
-### Builds
+### Build
 
 | Build Mode  | Command(s)     | Output Dir | EnableProdMode | Uglify | AOT   |
 | ----------- | -------------- | ---------- | -------------- | ------ | ----- |
