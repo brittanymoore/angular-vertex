@@ -19,7 +19,7 @@ module.exports = function (config) {
         logLevel: config.LOG_INFO,
         autoWatch: false,
         browsers: ['Chrome'],
-        singleRun: true,
+        singleRun: false,
         concurrency: Infinity
     });
 }

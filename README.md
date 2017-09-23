@@ -16,7 +16,7 @@ This repo provides the following:
 * linting with tslint / codelyzer
 * some angular-cli support**
 
-**This project was not built with angular-cli, but has the minimal support required to use ng generate (because it's awesome).
+**This project was not built with angular-cli, but has the minimal support required to use the 'ng g' commands.
 
 ## Getting Started
 
@@ -33,7 +33,7 @@ npm install
 To run the app in development mode:
 
 ```
-npm run start
+npm start
 ```
 
 Once the server is running, open a browser and navigate to localhost:3000.
@@ -59,7 +59,7 @@ Support is built-in for unit testing with Karma and end-to-end testing with Prot
 Unit tests should be added to a file named **.spec.ts somewhere in src directory tree. To run the tests:
 
 ```
-npm run test
+npm test
 ```
 
 E2E tests should be added to a file named **.e2e.ts somewhere in the src directory tree. To run the tests:
