@@ -1,6 +1,6 @@
 # Angular Seed
 
-angular-seed is a seed repository using angular and webpack.
+Angular seed using Webpack.
 
 Check out my [todo demo](https://github.com/brittanymoore/angular-demo-todo) for a more robust example
 including some functionality, tests, and mocking.
@@ -14,56 +14,37 @@ This repo provides the following:
 * unit testing with karma
 * end-to-end testing with protractor
 * linting with tslint / codelyzer
-* some angular-cli support**
-
-**This project was not built with angular-cli, but has the minimal support required to use the 'ng g' commands.
+* 'ng g' support (Angular CLI)
 
 ## Getting Started
 
-### Get the Code
+### Get Started
 
 ```
 git clone https://github.com/brittanymoore/angular-seed.git
 cd angular-seed
 npm install
-```
-
-### Launch the App
-
-To run the app in development mode:
-
-```
 npm start
 ```
 
-Once the server is running, open a browser and navigate to localhost:3000.
+### Builds
 
-### Build
+| Build Mode  | Command(s)     | Output Dir | EnableProdMode | Uglify | AOT   |
+| ----------- | -------------- | ---------- | -------------- | ------ | ----- |
+| Development | build          | dev        | no             | no     | no    |
+|             | start          |            |                |        |       |
+| Production  | build:prod     | dist       | yes            | yes    | yes   |
+|             | start:prod     |            |                |        |       |
 
-| Build Mode        | Command        | Output   | EnableProdMode | Uglify | AOT   | Mocks |
-| ----------------- | -------------- | -------  | -------------- | ------ | ----- | ----- |
-| Dev               | build          | dev      | false          | false  | false | true  |
-| Prod              | build:prod     | dist     | true           | true   | true  | false |
-
-Each mode has a start command similar to the one above, which can be used to launch the app in localhost:
-
-```
-npm run start
-npm run start:prod
-```
 
 ### Test
 
-Support is built-in for unit testing with Karma and end-to-end testing with Protractor.
-
-Unit tests should be added to a file named **.spec.ts somewhere in src directory tree. To run the tests:
-
+Run unit tests:
 ```
 npm test
 ```
 
-E2E tests should be added to a file named **.e2e.ts somewhere in the src directory tree. To run the tests:
-
+Run end-to-end tests:
 ```
 // initialize or update webdriver
 npm run webdriver-manager -- update
