@@ -42,7 +42,8 @@ module.exports = webpackMerge(common.config, {
                     'exports-loader?module.exports.toString()',
                     'css-loader?sourceMap=false&importLoaders=1&minimize=true',
                     { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
-                ] 
+                ],
+                exclude: /node_modules/
             }     
         ]
     },

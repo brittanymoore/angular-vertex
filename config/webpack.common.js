@@ -3,6 +3,7 @@ const path = require('path');
 
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // constants
 const appName = 'My App';
@@ -30,9 +31,7 @@ exports.config = {
 
     module: {
         rules: [
-            { 
-                test: /\.html$/, loader: 'raw-loader' 
-            },
+            {  test: /\.html$/, loader: 'raw-loader'  },
             {
                 test: /\.(eot|svg)$/,
                 loader: 'file-loader?name=assets/[name].[hash:20].[ext]'
@@ -40,7 +39,8 @@ exports.config = {
             {
                 test: /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
                 loader: 'url-loader?name=assets/[name].[hash:20].[ext]&limit=10000'
-            }
+            },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }), include: /node_modules/ }    
         ]
     },
 
@@ -50,7 +50,9 @@ exports.config = {
             title: appName,
             template: './config/index.template.ejs',
             chunksSortMode: 'dependency'
-        })
+        }),
+
+        new ExtractTextPlugin('styles.css'),        
         
     ],
 

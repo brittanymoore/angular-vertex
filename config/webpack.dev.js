@@ -31,7 +31,7 @@ module.exports = webpackMerge(common.config, {
                 exclude: /node_modules/
             },
             { test: /\.scss$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader', 'sass-loader' ] },
-            { test: /\.css$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader' ] }
+            { test: /\.css$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader' ], exclude: /node_modules/ }
         ]
     },
 
