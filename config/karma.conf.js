@@ -1,3 +1,10 @@
+// modify webpack for test mode
+const webpackConfig = require('./webpack.dev');
+webpackConfig.output = {};
+webpackConfig.module.rules.push({ 
+    test: /\.ts$/, loader: 'istanbul-instrumenter-loader', enforce: 'post', exclude: /node_modules|\.spec\.ts$/ 
+});
+
 module.exports = function (config) {
     config.set({
         basePath: '',
