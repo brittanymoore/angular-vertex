@@ -20,7 +20,7 @@ const SOURCE_PATH = path.resolve(__dirname, './../src');
 module.exports = webpackMerge(common.config, {
 
     output: {
-        filename: '[name].js',        
+        filename: '[name].[chunkhash].js',        
         publicPath: common.publicPath,
         path: OUTPUT_PATH
     },
@@ -81,7 +81,6 @@ module.exports = webpackMerge(common.config, {
             minimize: true,
             debug: false
         }),
-        //new webpack.optimize.UglifyJsPlugin({
         new UglifyJSPlugin()
 
     ],
