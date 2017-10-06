@@ -5,6 +5,7 @@ const webpackMerge = require('webpack-merge');
 // plugins
 const ngtools = require('@ngtools/webpack');
 const WebpackChunkHash = require('webpack-chunk-hash');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 // common config
 const common = require('./webpack.common');
@@ -19,7 +20,7 @@ const SOURCE_PATH = path.resolve(__dirname, './../src');
 module.exports = webpackMerge(common.config, {
 
     output: {
-        filename: '[name].[chunkhash].js',        
+        filename: '[name].js',        
         publicPath: common.publicPath,
         path: OUTPUT_PATH
     },
@@ -80,15 +81,8 @@ module.exports = webpackMerge(common.config, {
             minimize: true,
             debug: false
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            beautify: false,
-            sourceMap: true,
-            compress: {
-                screw_ie8: true,
-                warnings: false
-            },            
-            comments: false
-        })
+        //new webpack.optimize.UglifyJsPlugin({
+        new UglifyJSPlugin()
 
     ],
 
