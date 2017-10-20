@@ -7,7 +7,7 @@ const common = require('./webpack.common');
 
 // constants
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
-const API_URL = process.env.API_URL = common.apiUrl;
+const API_URL = process.env.API_URL = '';
 
 const OUTPUT_PATH = path.resolve(__dirname, './../dev');
 const SOURCE_PATH = path.resolve(__dirname, './../src');
@@ -27,7 +27,11 @@ module.exports = webpackMerge(common.config, {
         rules: [
             { 
                 test: /\.ts$/, 
-                use: [ 'awesome-typescript-loader',  'angular2-template-loader',  'angular-router-loader' ],
+                use: [ 
+                    { loader: 'awesome-typescript-loader', options: { silent: true }},
+                    'angular2-template-loader',
+                    'angular-router-loader' 
+                ],
                 exclude: /node_modules/
             },
             { test: /\.scss$/, use: [ 'exports-loader?module.exports.toString()', 'css-loader', 'sass-loader' ] },

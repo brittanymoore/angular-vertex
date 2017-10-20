@@ -12,7 +12,8 @@ const common = require('./webpack.common');
 
 // constants
 const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const API_URL = process.env.API_URL = common.apiUrl;
+const API_URL = process.env.API_URL = '';
+const PUBLIC_PATH = '';
 
 const OUTPUT_PATH = path.resolve(__dirname, './../dist');
 const SOURCE_PATH = path.resolve(__dirname, './../src');
@@ -21,11 +22,9 @@ module.exports = webpackMerge(common.config, {
 
     output: {
         filename: '[name].[chunkhash].js',        
-        publicPath: common.publicPath,
+        publicPath: PUBLIC_PATH,
         path: OUTPUT_PATH
     },
-
-    devtool: 'source-map',
 
     module: {
         rules: [
@@ -86,7 +85,10 @@ module.exports = webpackMerge(common.config, {
     ],
 
     devServer: {
-        contentBase: OUTPUT_PATH
+        contentBase: OUTPUT_PATH,
+        historyApiFallback: {
+            index: PUBLIC_PATH
+        }
     }
 
 });

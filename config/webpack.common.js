@@ -8,9 +8,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // constants
 const appName = 'My App';
 
-exports.apiUrl = '';
-exports.publicPath = '';
-
 exports.config = {
 
     entry: {
@@ -57,8 +54,16 @@ exports.config = {
     ],
 
     devServer: {
-        historyApiFallback: true,
         port: 3000
+    },
+
+    stats: {
+        assets: true,
+        children: false,
+        errors: true,
+        errorDetails: true,
+        modules: false,
+        warnings: false
     }
 
 };
