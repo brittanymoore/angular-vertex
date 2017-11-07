@@ -29,12 +29,5 @@ describe('Sanity Check:', () => {
 
 });
 
-// recursively seek out files ending with .spec.ts
-// this should prevent us from having to add a require line for each new test file
-var testContext = require.context('../src', true, /\.spec\.ts/);
-
-function requireAll(requireContext) {
-  return requireContext.keys().map(requireContext);
-}
-
-var modules = requireAll(testContext);
+const testContext = require.context('./../src', true, /\.spec\.ts/);
+testContext.keys().map(testContext);
