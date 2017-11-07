@@ -1,24 +1,24 @@
 const webpack = require('webpack');
 const path = require('path');
 
-// plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// constants
-const appName = 'My App';
+const OUTPUT_PATH = path.resolve(__dirname, `./../${process.env.OUTPUT_DIR}`);
 
-exports.config = {
+module.exports = {
 
     entry: {
         'main': './src/main.ts',
-        'polyfill': './src/polyfill.ts',
-        'vendor': './src/vendor.ts'
+        'vendor': './src/vendor.ts',
+        'polyfill': './src/polyfill.ts'
     },
 
     output: {
         sourceMapFilename: '[name].map',
-        chunkFilename: '[id].chunk.js'
+        chunkFilename: '[id].chunk.js',
+        publicPath: process.env.PUBLIC_PATH,
+        path: OUTPUT_PATH
     },
 
     resolve: {
@@ -28,36 +28,55 @@ exports.config = {
 
     module: {
         rules: [
-            {  test: /\.html$/, loader: 'raw-loader'  },
+            { test: /\.html$/, loader: 'raw-loader' },
             {
                 test: /\.(eot|svg)$/,
-                loader: 'file-loader?name=assets/[name].[hash:20].[ext]'
+                use: 'file-loader?name=assets/[name].[hash:20].[ext]'
             },
             {
                 test: /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
-                loader: 'url-loader?name=assets/[name].[hash:20].[ext]&limit=10000'
-            },
-            { test: /\.css$/, loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' }), include: /node_modules/ }    
+                use: 'url-loader?name=assets/[name].[hash:20].[ext]&limit=10000'
+            }
         ]
     },
 
     plugins: [
 
         new HtmlWebpackPlugin({
-            title: appName,
+            title: process.env.APP_NAME,
+            baseUrl: process.env.BASE_URL,
             template: './config/index.template.ejs',
             chunksSortMode: 'dependency'
         }),
 
-        new ExtractTextPlugin('styles.css'),        
+        new ExtractTextPlugin('styles/[name].css'),
+
+        new webpack.DefinePlugin({
+            'process.env': {
+                'ENV': JSON.stringify(process.env.NODE_ENV),
+                'API_URL': JSON.stringify(process.env.API_URL)
+            }
+        }),
         
     ],
 
     devServer: {
-        port: 3000,
+        port: 4200,
+        contentBase: OUTPUT_PATH,
+        historyApiFallback: {
+            index: process.env.PUBLIC_PATH
+        },
         watchOptions: {
             ignored: '**/*.spec.ts'
         },
+        proxy: {
+            '/api/**': {
+                target: 'http://localhost:3000',
+                secure: false,
+                changeOrigin: true,
+                pathRewrite: { '^/api': '' }
+            }
+        }
     },
 
     stats: {

@@ -15,15 +15,25 @@ This repo provides the following:
 * end-to-end testing with protractor
 * linting with tslint / codelyzer
 * 'ng g' support (Angular CLI)
+* node server
 
 ## Getting Started
 
-### Get Started
+### Get the Code
 
 ```
 git clone https://github.com/brittanymoore/angular-seed.git
 cd angular-seed
 npm install
+```
+
+### Launch the App
+
+Run the commands below in two separate terminals. The serve command starts an express server, and the start command launches the 
+angular application.
+
+```
+npm run serve
 npm start
 ```
 

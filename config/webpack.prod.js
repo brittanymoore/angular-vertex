@@ -1,50 +1,45 @@
 const webpack = require('webpack');
-const path = require('path');
-const webpackMerge = require('webpack-merge');
 
-// plugins
 const ngtools = require('@ngtools/webpack');
 const WebpackChunkHash = require('webpack-chunk-hash');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-// common config
-const common = require('./webpack.common');
-
-// constants
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-const API_URL = process.env.API_URL = '';
-const PUBLIC_PATH = '';
-
-const OUTPUT_PATH = path.resolve(__dirname, './../dist');
-const SOURCE_PATH = path.resolve(__dirname, './../src');
-
-module.exports = webpackMerge(common.config, {
+module.exports = {
 
     output: {
-        filename: '[name].[chunkhash].js',        
-        publicPath: PUBLIC_PATH,
-        path: OUTPUT_PATH
+        filename: '[name].[chunkhash].min.js'      
     },
 
     module: {
         rules: [
             { test: /\.ts$/, loader: '@ngtools/webpack', exclude: /node_modules/ },
-            {
-                test: /\.scss$/, use: [
+            { 
+                test: /\.scss$/,
+                use: [
                     'exports-loader?module.exports.toString()',
                     'css-loader?sourceMap=false&importLoaders=1&minimize=true',
                     'sass-loader',
-                    { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
-                ]
-            },     
+                    { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}    
+                ],
+                exclude: [ /node_modules/, /src\\global.css/ ]
+            },
             { 
                 test: /\.css$/, use: [
                     'exports-loader?module.exports.toString()',
                     'css-loader?sourceMap=false&importLoaders=1&minimize=true',
                     { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
                 ],
-                exclude: /node_modules/
-            }     
+                exclude: [ /node_modules/, /src\\global.css/ ]
+            },
+            { 
+                test: /\.css$/, 
+                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: [
+                    'css-loader?sourceMap=false&importLoaders=1&minimize=true',
+                    { loader: 'postcss-loader', options: { config: { path: './config/postcss.config.js' }}}
+                ]}), 
+                include: [ /node_modules/, /src\\global.css/ ]
+            } 
         ]
     },
 
@@ -69,26 +64,12 @@ module.exports = webpackMerge(common.config, {
             mainPath: './src/main.ts'
         }),
 
-        new webpack.DefinePlugin({
-            'process.env': {
-                'ENV': JSON.stringify(ENV),
-                'API_URL': JSON.stringify(API_URL)
-            }
-        }),
-
         new webpack.LoaderOptionsPlugin({
             minimize: true,
             debug: false
         }),
-        new UglifyJSPlugin()
+        new UglifyJsPlugin()
 
-    ],
+    ]
 
-    devServer: {
-        contentBase: OUTPUT_PATH,
-        historyApiFallback: {
-            index: PUBLIC_PATH
-        }
-    }
-
-});
+};
