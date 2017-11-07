@@ -15,7 +15,11 @@ This repo provides the following:
 * end-to-end testing with protractor
 * linting with tslint / codelyzer
 * 'ng g' support (Angular CLI)
-* node server
+* express / json-server
+
+Notes:
+As of Angular 5.0.0, AotPlugin has been replaced by [AngularCompilerPlugin](https://www.npmjs.com/package/@ngtools/webpack). See link for 
+upgrade instructions.
 
 ## Getting Started
 

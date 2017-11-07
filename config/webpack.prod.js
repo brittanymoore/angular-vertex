@@ -13,7 +13,7 @@ module.exports = {
 
     module: {
         rules: [
-            { test: /\.ts$/, loader: '@ngtools/webpack', exclude: /node_modules/ },
+            { test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/, loader: '@ngtools/webpack', exclude: /node_modules/ },
             { 
                 test: /\.scss$/,
                 use: [
@@ -59,9 +59,9 @@ module.exports = {
         new webpack.HashedModuleIdsPlugin(),
         new WebpackChunkHash(),
 
-        new ngtools.AotPlugin({
+        new ngtools.AngularCompilerPlugin({
             tsConfigPath: './tsconfig.aot.json',
-            mainPath: './src/main.ts'
+            entryModule: './src/app/app.module#AppModule'
         }),
 
         new webpack.LoaderOptionsPlugin({
