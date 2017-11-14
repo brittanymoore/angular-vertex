@@ -67,3 +67,7 @@ npm run webdriver-manager -- update
 npm run start
 npm run test:e2e
 ```
+
+### Known Issues / Workarounds
+
+webpack-dev-server set to version 2.7.1 ([Issue](https://github.com/webpack/webpack-dev-server/issues/1143)).

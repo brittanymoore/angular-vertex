@@ -19,4 +19,6 @@ import 'core-js/es6/set';
 // required
 import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
+
+window['__Zone_disable_IE_check'] = true; // IE 9/10
 import 'zone.js/dist/zone';
