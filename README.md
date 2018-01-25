@@ -79,6 +79,4 @@ For IE 10 / 11:
 For IE 9, also:
 * Make sure you are using useHash in your router configuration (see the commented section in app-routing.module.ts).
 
-### Known Issues / Workarounds
-
-webpack-dev-server set to version 2.7.1 ([Issue](https://github.com/webpack/webpack-dev-server/issues/1143)).
+Note: webpack-dev-server only officially supports the last two versions of major browsers.
