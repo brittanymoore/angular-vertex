@@ -1,98 +1,18 @@
 {
+    "extends": [
+        "tslint:recommended",
+        "tslint-angular"
+    ],
     "rulesDirectory": [
         "./../node_modules/codelyzer"
     ],
     "rules": {
-
-        // TypeScript-specific
-        "adjacent-overload-signatures": true,
-        "member-access": true,
-        "only-arrow-functions": [true, "allow-declarations", "allow-named-functions"],
-
-        // Functionality
-        "curly": true,
-        "import-blacklist": [true, "rxjs"],
-        "no-conditional-assignment": true,
-        "no-bitwise": true,
-        "no-console": [true, "log"],
-        "no-duplicate-super": true,
-        "no-duplicate-variable": true,
-        "no-empty": true,
-        "no-eval": true,
-        "no-for-in-array": true,
-        "no-invalid-this": true,
-        "no-shadowed-variable": true,
-        "no-switch-case-fall-through": true,  
-        "no-this-assignment": true,
-        "no-unused-expression": true,
-        "no-unused-variable": [ true, "check-parameters", {"ignore-pattern": "^_"} ],
-        "no-use-before-declare": true,
-        "no-var-keyword": true,
-        "prefer-conditional-expression": true,
-        "prefer-object-spread": true,
-        "radix": true,
-        "restrict-plus-operands": true,
-        "switch-default": true, 
-        "triple-equals": [ true, "allow-null-check" ],
-        
-        // Maintainability
-        "deprecation": true,
-        "eofline": true,
-        "indent": [ true, "spaces", 4 ],
-        "max-classes-per-file": [true, 1],
-        "max-file-line-count": [true, 500],
-        "max-line-length": [ true, 150 ],
-        "no-default-export": true,
-        "no-duplicate-imports": true,
-        "prefer-const": true,
-        "trailing-comma": [ true, { "multiline": "never", "singleline": "never" }],
-
-        // Style
-        "align": [true, "parameters", "arguments", "statements"],
-        "array-type": [true, "array"],
-        "arrow-parens": true,
-        "arrow-return-shorthand": true,
-        "binary-expression-operand-order": true,
-        "class-name": true,
-        "comment-format": [ true, "check-space" ],
-        "import-spacing": true,
-        "interface-name": [true, "never-prefix"],
-        "match-default-export-name": true,
-        "new-parens": true,
-        "no-boolean-literal-compare": true,
-        "no-consecutive-blank-lines": true,
-        "no-irregular-whitespace": true,
-        "no-trailing-whitespace": true,
-        "no-unnecessary-callback-wrapper": true,
-        "no-unnecessary-initializer": true,
-        "no-unnecessary-qualifier": true,
-        "number-literal-format": true,
-        "object-literal-key-quotes": [true, "as-needed"],
-        "one-line": [ true, "check-open-brace", "check-catch", "check-else", "check-whitespace" ],
-        "one-variable-per-declaration": [true, "ignore-for-loop"],
-        "prefer-method-signature": true,
-        "prefer-switch": true,
-        "prefer-template": true,
-        "quotemark": [true, "single"],
-        "return-undefined": true,
-        "semicolon": [true, "always"],
-        "space-before-function-paren": [true, "never"],
-        "switch-final-break": true,
-        "variable-name": [ true, "check-format", "allow-leading-underscore", "ban-keywords" ],
-        "whitespace": [ true, "check-branch", "check-decl", "check-operator", "check-separator", "check-type" ],
-
-        // codelyzer (Angular) rules
+        "component-selector": [true, "element", "", "kebab-case"],
         "directive-selector": [true, "attribute", "", "camelCase"],
-        "component-selector": [true, "element", "app", "kebab-case"],
-        "use-input-property-decorator": true,
-        "use-output-property-decorator": true,
-        "use-host-property-decorator": true,
-        "no-input-rename": true,
-        "no-output-rename": true,
-        "use-life-cycle-interface": true,
-        "use-pipe-transform-interface": true,
-        "component-class-suffix": true,
-        "directive-class-suffix": true
-
+        "quotemark": [true, "single"]
+    },
+    "jsRules": {
+      "quotemark": [true, "single"],
+      "object-literal-sort-keys": false
     }
 }

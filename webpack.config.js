@@ -1,15 +1,16 @@
 const webpackMerge = require('webpack-merge');
+const dotenv = require('dotenv');
 
-module.exports = function (env) {
+module.exports = function(env) {
 
-    process.env.NODE_ENV = (env === 'dev') ? 'development' : 'production';
+  process.env.NODE_ENV = (env === 'dev') ? 'development' : 'production';
 
-    require('dotenv').config({path: `./config/.env.${process.env.NODE_ENV}`});
-    require('dotenv').config({path: './config/.env.default'});    
+  dotenv.config({ path: `./config/.env.${process.env.NODE_ENV}` });
+  dotenv.config({ path: './config/.env.default' });
 
-    const commonConfig = require('./config/webpack.common.js');
-    const config = require(`./config/webpack.${env}.js`);
+  const commonConfig = require('./config/webpack.common.js');
+  const config = require(`./config/webpack.${env}.js`);
 
-    return webpackMerge(commonConfig, config);
+  return webpackMerge(commonConfig, config);
 
-}
+};

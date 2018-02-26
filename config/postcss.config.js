@@ -1,6 +1,6 @@
 module.exports = {
-    plugins: [
-        // automatically add browser prefixes
-        require('autoprefixer')({})
-    ]
-}
+  plugins: [
+    // automatically add browser prefixes
+    require('autoprefixer')({}),
+  ],
+};

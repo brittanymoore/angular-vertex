@@ -1,11 +1,11 @@
 {
-    "apps": [
-        {
-            "root": "src",
-            "prefix": "app"
-        }
-    ],
-    "defaults": {
-        "styleExt": "scss"
+  "apps": [
+    {
+      "root": "src",
+      "prefix": "app"
     }
+  ],
+  "defaults": {
+    "styleExt": "scss"
+  }
 }

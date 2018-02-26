@@ -11,22 +11,20 @@ import 'zone.js/dist/jasmine-patch';
 import { TestBed } from '@angular/core/testing';
 
 import {
-    BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting,
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 
 TestBed.initTestEnvironment(
-    BrowserDynamicTestingModule,
-    platformBrowserDynamicTesting()
+  BrowserDynamicTestingModule,
+  platformBrowserDynamicTesting(),
 );
 
 // Make sure Karma is running correctly.
 describe('Sanity Check:', () => {
-
-    it('Karma is working.', () => {
-        expect(0).toBe(0);
-    });
-
+  it('Karma is working.', () => {
+    expect(0).toBe(0);
+  });
 });
 
 const testContext = require.context('./../src', true, /\.spec\.ts/);
