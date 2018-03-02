@@ -6,19 +6,27 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const OUTPUT_PATH = path.resolve(__dirname, `./../${process.env.OUTPUT_DIR}`);
 
-module.exports = {
+const postcssLoader =           {
+  loader: 'postcss-loader',
+  options: { config: { path: './config/postcss.config.js' } },
+};
 
+module.exports = {
   entry: {
     main: './src/main.ts',
-    polyfill: './src/polyfill.ts',
     vendor: './src/vendor.ts',
   },
 
   output: {
-    chunkFilename: '[id].chunk.js',
-    path: OUTPUT_PATH,
-    publicPath: process.env.PUBLIC_PATH,
     sourceMapFilename: '[name].map',
+    chunkFilename: '[id].chunk.js',
+    publicPath: process.env.PUBLIC_PATH,
+    path: OUTPUT_PATH,
+  },
+
+  resolve: {
+    extensions: ['.ts', '.js'],
+    modules: [path.resolve(__dirname, './../node_modules')],
   },
 
   module: {
@@ -32,56 +40,71 @@ module.exports = {
         test: /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
         use: 'url-loader?name=assets/[name].[hash:20].[ext]&limit=10000',
       },
+      {
+        test: /\.css$/,
+        use: [ 'exports-loader?module.exports.toString()', 'css-loader', postcssLoader ],
+        exclude: [/node_modules/, /src\/global.css/],
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          use: [ 'css-loader', postcssLoader ],
+        }),
+        include: [/src\/global.css/],
+      },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          use: ['css-loader'],
+        }),
+        include: [/node_modules/],
+      },
     ],
   },
 
   plugins: [
-    new ExtractTextPlugin('styles/[name].css'),
     new HtmlWebpackPlugin({
-      baseUrl: process.env.BASE_URL,
-      chunksSortMode: 'dependency',
-      template: './config/index.template.ejs',
       title: process.env.APP_NAME,
+      baseUrl: process.env.BASE_URL,
+      template: './config/index.template.ejs',
+      chunksSortMode: 'dependency',
     }),
+
+    new ExtractTextPlugin('styles/[name].css'),
+
     new webpack.DefinePlugin({
       'process.env': {
-        API_URL: JSON.stringify(process.env.API_URL),
         ENV: JSON.stringify(process.env.NODE_ENV),
+        API_URL: JSON.stringify(process.env.API_URL),
       },
     }),
   ],
 
-  resolve: {
-    extensions: ['.ts', '.js'],
-    modules: [path.resolve(__dirname, './../node_modules')],
+  devServer: {
+    port: 4200,
+    contentBase: OUTPUT_PATH,
+    historyApiFallback: {
+      index: process.env.PUBLIC_PATH,
+    },
+    watchOptions: {
+      ignored: '**/*.spec.ts',
+    },
+    proxy: {
+      '/api/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+      },
+    },
   },
 
   stats: {
     assets: true,
     children: false,
-    errorDetails: true,
     errors: true,
+    errorDetails: true,
     modules: false,
     warnings: false,
   },
-
-  devServer: {
-    contentBase: OUTPUT_PATH,
-    historyApiFallback: {
-      index: process.env.PUBLIC_PATH,
-    },
-    port: 4200,
-    proxy: {
-      '/api/**': {
-        changeOrigin: true,
-        pathRewrite: { '^/api': '' },
-        secure: false,
-        target: 'http://localhost:3000',
-      },
-    },
-    watchOptions: {
-      ignored: '**/*.spec.ts',
-    },
-  },
-
 };
