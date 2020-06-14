@@ -75,7 +75,7 @@
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-chunk-hash": "^0.5.0",
-    "webpack-dev-server": "^2.11.2",
+    "webpack-dev-server": "^3.1.11",
     "webpack-merge": "^4.1.2"
   }
 }
